@@ -1,0 +1,45 @@
+# ── OS / editor ───────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+*.code-workspace
+
+# ── Node / build tools ────────────────────────────────────────────────────
+node_modules/
+npm-debug.log*
+yarn-error.log*
+.npm/
+dist/
+build/
+.cache/
+.parcel-cache/
+
+# ── Environment & secrets ────────────────────────────────────────────────
+.env
+.env.*
+*.env
+secrets.*
+config.local.*
+
+# ── Python / server ───────────────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+
+# ── Logs / temp ───────────────────────────────────────────────────────────
+*.log
+*.tmp
+*.bak
+*.orig
+
+# ── Generated / backup ───────────────────────────────────────────────────
+*.backup.js
