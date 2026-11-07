@@ -76,102 +76,94 @@
   setupCopyButton('copy-map-btn', 'copy-map-feedback');
   setupCopyButton('finale-copy-map-btn', 'finale-copy-feedback');
 
-  // ── Romantic Floating Canvas for Section 2 (Family Invitation) ─────────
-  const romanceCanvas = document.getElementById('romance-canvas');
-  if (romanceCanvas) {
-    const rCtx = romanceCanvas.getContext('2d');
-    let rW, rH;
-    const rParticles = [];
-
-    function resizeRomance() {
-      const invSec = document.getElementById('invitation');
-      if (!invSec) return;
-      rW = romanceCanvas.width = invSec.offsetWidth;
-      rH = romanceCanvas.height = invSec.offsetHeight;
-    }
-    resizeRomance();
-    window.addEventListener('resize', resizeRomance, { passive: true });
-
-    for (let i = 0; i < 24; i++) {
-      rParticles.push({
-        x: Math.random() * (rW || 800),
-        y: Math.random() * (rH || 600),
-        size: 8 + Math.random() * 12,
-        speedY: 0.3 + Math.random() * 0.6,
-        drift: -0.3 + Math.random() * 0.6,
-        rot: Math.random() * Math.PI * 2,
-        rotSpd: -0.01 + Math.random() * 0.02,
-        alpha: 0.15 + Math.random() * 0.35,
-        type: Math.random() > 0.4 ? 'petal' : 'heart',
-      });
-    }
-
-    function renderRomance() {
-      rCtx.clearRect(0, 0, rW, rH);
-      for (const p of rParticles) {
-        p.y += p.speedY;
-        p.x += p.drift;
-        p.rot += p.rotSpd;
-        if (p.y > rH + 20) { p.y = -20; p.x = Math.random() * rW; }
-        if (p.x < -20) p.x = rW + 20;
-        if (p.x > rW + 20) p.x = -20;
-
-        rCtx.save();
-        rCtx.translate(p.x, p.y);
-        rCtx.rotate(p.rot);
-        if (p.type === 'heart') {
-          rCtx.fillStyle = `rgba(199, 170, 114, ${p.alpha * 0.6})`;
-          rCtx.font = `${p.size}px serif`;
-          rCtx.fillText('♥', 0, 0);
-        } else {
-          rCtx.fillStyle = `rgba(240, 195, 200, ${p.alpha * 0.5})`;
-          rCtx.beginPath();
-          rCtx.ellipse(0, 0, p.size * 0.5, p.size, 0, 0, Math.PI * 2);
-          rCtx.fill();
-        }
-        rCtx.restore();
-      }
-      requestAnimationFrame(renderRomance);
-    }
-    requestAnimationFrame(renderRomance);
-  }
-
-  // ── Interactive Shower Blessings Button (Section 2) ───────────────────
+  // ── Refined Shower Blessings Interaction (Section 1: Open Letter) ────
   const sendBlessingBtn = document.getElementById('send-blessing-btn');
   const blessingToast   = document.getElementById('blessing-toast');
   if (sendBlessingBtn) {
     let blessingCount = 0;
-    sendBlessingBtn.addEventListener('click', (e) => {
+    sendBlessingBtn.addEventListener('click', () => {
       blessingCount++;
       const messages = [
-        'Thank you for showering your blessings! ♡',
-        'With your love and presence, our journey is complete! ✨',
+        'Thank you for showering your blessings! Srishti & Himanshu feel truly blessed. ♡',
+        'With your love and presence, our beginning is complete! ✨',
         'Your warmest hugs and prayers mean the world to us! 🌸',
-        'Srishti & Himanshu are blessed to have you in their lives! 💍'
+        'Thank you for being part of our happiest celebration! 💍'
       ];
       if (blessingToast) {
         blessingToast.textContent = messages[blessingCount % messages.length];
         blessingToast.style.opacity = '1';
         setTimeout(() => {
           if (blessingToast) blessingToast.style.opacity = '0.9';
-        }, 3500);
+        }, 4000);
       }
 
-      // Spawn floating hearts from button
+      // One brief burst of soft white & powder-blue petals below the button (never covering letter text)
       const rect = sendBlessingBtn.getBoundingClientRect();
-      for (let i = 0; i < 12; i++) {
-        const h = document.createElement('div');
-        h.className = 'interactive-floating-heart';
-        h.textContent = ['♥', '🌸', '✨', '✦', '💍'][Math.floor(Math.random() * 5)];
-        h.style.left = (rect.left + rect.width / 2 + (Math.random() * 80 - 40)) + 'px';
-        h.style.top  = (rect.top + window.scrollY) + 'px';
-        h.style.setProperty('--dx', `${(Math.random() - 0.5) * 140}px`);
-        h.style.setProperty('--dy', `${-120 - Math.random() * 120}px`);
-        document.body.appendChild(h);
-        setTimeout(() => h.remove(), 1600);
+      for (let i = 0; i < 16; i++) {
+        const petal = document.createElement('div');
+        petal.className = 'blessing-silk-petal';
+        const isBlue = i % 2 === 0;
+        petal.style.cssText = `
+          position: fixed;
+          width: ${10 + Math.random() * 8}px;
+          height: ${14 + Math.random() * 10}px;
+          border-radius: 50% 10% 50% 50%;
+          background: ${isBlue ? 'linear-gradient(135deg, #CBE0F5, #8BB4D9)' : 'linear-gradient(135deg, #FFFFFF, #F0F4F8)'};
+          border: 1px solid ${isBlue ? 'rgba(139, 180, 217, 0.4)' : 'rgba(213, 228, 242, 0.6)'};
+          box-shadow: 0 2px 6px rgba(25, 59, 85, 0.08);
+          left: ${rect.left + rect.width / 2 + (Math.random() * 40 - 20)}px;
+          top: ${rect.bottom - 10}px;
+          pointer-events: none;
+          z-index: 99;
+          opacity: 0.95;
+          transform: rotate(${Math.random() * 360}deg);
+          transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.3, 1), opacity 1.2s ease;
+        `;
+        document.body.appendChild(petal);
+
+        const dx = (Math.random() - 0.5) * 160;
+        const dy = 40 + Math.random() * 110;
+        const rot = (Math.random() - 0.5) * 240;
+
+        requestAnimationFrame(() => {
+          petal.style.transform = `translate(${dx}px, ${dy}px) rotate(${rot}deg) scale(0.85)`;
+          petal.style.opacity = '0';
+        });
+
+        setTimeout(() => petal.remove(), 1250);
       }
     });
   }
+
+  // ── Keepsake Card Tap-To-Enlarge Lightbox Modal ───────────────────────
+  const cardPreviewWrap  = document.getElementById('card-preview-wrap');
+  const cardLightbox     = document.getElementById('card-lightbox');
+  const lightboxCloseBtn = document.getElementById('lightbox-close-btn');
+  const lightboxOverlay  = document.getElementById('lightbox-close-overlay');
+
+  function openCardLightbox() {
+    if (cardLightbox) cardLightbox.classList.remove('hidden');
+  }
+  function closeCardLightbox() {
+    if (cardLightbox) cardLightbox.classList.add('hidden');
+  }
+
+  if (cardPreviewWrap) {
+    cardPreviewWrap.addEventListener('click', openCardLightbox);
+    cardPreviewWrap.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openCardLightbox();
+      }
+    });
+  }
+  if (lightboxCloseBtn) lightboxCloseBtn.addEventListener('click', closeCardLightbox);
+  if (lightboxOverlay)  lightboxOverlay.addEventListener('click', closeCardLightbox);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && cardLightbox && !cardLightbox.classList.contains('hidden')) {
+      closeCardLightbox();
+    }
+  });
 
   // Staggered Fade-Up Observer
   const fadeElements = document.querySelectorAll('.fade-up');

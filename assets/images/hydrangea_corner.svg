@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <linearGradient id="roseWhite" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="60%" stop-color="#F2F6FA" />
+      <stop offset="100%" stop-color="#D5E4F2" />
+    </linearGradient>
+    <linearGradient id="hydrangeaBlue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#CBE0F5" />
+      <stop offset="50%" stop-color="#99BFE3" />
+      <stop offset="100%" stop-color="#6F9DC9" />
+    </linearGradient>
+    <linearGradient id="leafSage" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#9EBAA8" />
+      <stop offset="100%" stop-color="#557A64" />
+    </linearGradient>
+    <linearGradient id="champagneGold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#EADCC6" />
+      <stop offset="100%" stop-color="#C5AD79" />
+    </linearGradient>
+  </defs>
+
+  <!-- Corner filigree vine in champagne -->
+  <path d="M 6 6 L 65 6 C 45 6, 12 18, 6 65 Z" fill="none" stroke="url(#champagneGold)" stroke-width="1.2" opacity="0.85" />
+  <path d="M 12 12 L 48 12 C 34 12, 16 20, 12 48 Z" fill="none" stroke="url(#hydrangeaBlue)" stroke-width="0.8" opacity="0.6" />
+
+  <!-- Sage Leaves -->
+  <path d="M 24 16 C 30 8, 42 10, 40 18 C 38 24, 28 22, 24 16 Z" fill="url(#leafSage)" opacity="0.85" />
+  <path d="M 16 24 C 8 30, 10 42, 18 40 C 24 38, 22 28, 16 24 Z" fill="url(#leafSage)" opacity="0.85" />
+  <path d="M 38 28 C 48 24, 52 34, 46 38 C 40 42, 34 34, 38 28 Z" fill="url(#leafSage)" opacity="0.75" />
+
+  <!-- Hydrangea Blossom Cluster (Delicate 4-petal florets) -->
+  <g transform="translate(42, 20)">
+    <circle cx="-5" cy="0" r="4.2" fill="url(#hydrangeaBlue)" />
+    <circle cx="5" cy="0" r="4.2" fill="url(#hydrangeaBlue)" />
+    <circle cx="0" cy="-5" r="4.2" fill="url(#hydrangeaBlue)" />
+    <circle cx="0" cy="5" r="4.2" fill="url(#hydrangeaBlue)" />
+    <circle cx="0" cy="0" r="1.5" fill="#FFFFFF" />
+  </g>
+  <g transform="translate(20, 42)">
+    <circle cx="-5" cy="0" r="4" fill="url(#hydrangeaBlue)" />
+    <circle cx="5" cy="0" r="4" fill="url(#hydrangeaBlue)" />
+    <circle cx="0" cy="-5" r="4" fill="url(#hydrangeaBlue)" />
+    <circle cx="0" cy="5" r="4" fill="url(#hydrangeaBlue)" />
+    <circle cx="0" cy="0" r="1.5" fill="#FFFFFF" />
+  </g>
+
+  <!-- Focal White Rose Blossom at Corner Junction -->
+  <g transform="translate(22, 22)">
+    <!-- Outer Petals -->
+    <path d="M -14 0 C -14 -10, -6 -14, 0 -14 C 6 -14, 14 -10, 14 0 C 14 10, 6 14, 0 14 C -6 14, -14 10, -14 0 Z" fill="url(#roseWhite)" stroke="#E1EBF5" stroke-width="0.8" />
+    <!-- Mid Petal Folds -->
+    <path d="M -9 -3 C -9 -9, 0 -10, 6 -6 C 11 -2, 9 6, 4 9 C -2 11, -8 7, -9 -3 Z" fill="#F8FAFD" stroke="#D3E2F0" stroke-width="0.8" />
+    <!-- Center Spiral / Bud -->
+    <circle cx="0" cy="0" r="5" fill="#FFFFFF" stroke="#C5AD79" stroke-width="0.7" />
+    <circle cx="0" cy="0" r="2.2" fill="url(#champagneGold)" opacity="0.8" />
+  </g>
+</svg>

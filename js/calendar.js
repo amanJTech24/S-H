@@ -65,16 +65,16 @@
         <svg viewBox="0 0 36 34" width="36" height="34" class="cal-heart-svg" aria-hidden="true">
           <defs>
             <linearGradient id="calHeartGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#3D87AE"/>
-              <stop offset="100%" stop-color="#1E5475"/>
+              <stop offset="0%" stop-color="#367FA3"/>
+              <stop offset="100%" stop-color="#193B55"/>
             </linearGradient>
             <filter id="heartGlow" x="-30%" y="-30%" width="160%" height="160%">
-              <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(199, 170, 114, 0.6)"/>
+              <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="rgba(197, 173, 121, 0.5)"/>
             </filter>
           </defs>
           <path d="M 18 31 C 18 31 2 20 2 10.5 C 2 4.8 6.5 1 12 1 C 15.2 1 17 2.6 18 3.8 C 19 2.6 20.8 1 24 1 C 29.5 1 34 4.8 34 10.5 C 34 20 18 31 18 31 Z"
-                fill="url(#calHeartGrad)" stroke="#C7AA72" stroke-width="1.8" filter="url(#heartGlow)"/>
-          <text x="18" y="14.5" text-anchor="middle" dominant-baseline="central" fill="#FFFDF7" font-family="'Cinzel', Georgia, serif" font-weight="700" font-size="14.5">5</text>
+                fill="url(#calHeartGrad)" stroke="#C5AD79" stroke-width="1.8" filter="url(#heartGlow)"/>
+          <text x="18" y="14.5" text-anchor="middle" dominant-baseline="central" fill="#FFFFFF" font-family="'Cinzel', Georgia, serif" font-weight="700" font-size="14.5">5</text>
         </svg>
       `;
       heartEl.setAttribute('aria-hidden', 'true');
@@ -333,7 +333,7 @@
       'SUMMARY:Srishti Jain & Himanshu Jain Wedding 💍',
       'DESCRIPTION:We joyfully invite you to celebrate the wedding of Srishti Jain & Himanshu Jain.\\nSaturday\\, 5 December 2026.',
       'LOCATION:Shehanshah Palace\\, Rajasthan\\, India',
-      'URL:https://maps.app.goo.gl/DZTHWSUSbHaPdhuF6',
+      'URL:https://maps.app.goo.gl/sGMF5VTTgQhBbkMn8',
       'TRANSP:TRANSPARENT',
       'STATUS:CONFIRMED',
       'BEGIN:VALARM',
@@ -529,7 +529,7 @@ body {
     </tr>
     <tr>
       <td class="label">Directions</td>
-      <td class="value"><a href="https://maps.app.goo.gl/DZTHWSUSbHaPdhuF6" style="color:#3D87AE; text-decoration:underline;">View on Google Maps</a></td>
+      <td class="value"><a href="https://maps.app.goo.gl/sGMF5VTTgQhBbkMn8" style="color:#367FA3; text-decoration:underline;">View on Google Maps</a></td>
     </tr>
   </table>
 

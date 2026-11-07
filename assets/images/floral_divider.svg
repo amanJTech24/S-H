@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 32" width="320" height="32">
+  <defs>
+    <linearGradient id="divChampagne" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#C5AD79" stop-opacity="0" />
+      <stop offset="35%" stop-color="#C5AD79" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#367FA3" stop-opacity="0.9" />
+      <stop offset="65%" stop-color="#C5AD79" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#C5AD79" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="divPetalBlue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#CBE0F5" />
+      <stop offset="100%" stop-color="#8BB4D9" />
+    </linearGradient>
+    <linearGradient id="divRose" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#EAF1F8" />
+    </linearGradient>
+  </defs>
+
+  <!-- Left & Right Hairline Rules -->
+  <line x1="10" y1="16" x2="135" y2="16" stroke="url(#divChampagne)" stroke-width="1" />
+  <line x1="185" y1="16" x2="310" y2="16" stroke="url(#divChampagne)" stroke-width="1" />
+
+  <!-- Delicate accent dots -->
+  <circle cx="125" cy="16" r="1.5" fill="#C5AD79" />
+  <circle cx="195" cy="16" r="1.5" fill="#C5AD79" />
+
+  <!-- Center Floral Motif -->
+  <!-- Hydrangea Florets Left & Right -->
+  <circle cx="147" cy="16" r="3.2" fill="url(#divPetalBlue)" />
+  <circle cx="173" cy="16" r="3.2" fill="url(#divPetalBlue)" />
+  
+  <!-- Center White Garden Rose -->
+  <circle cx="160" cy="16" r="6.5" fill="url(#divRose)" stroke="#D5E4F2" stroke-width="0.8" />
+  <circle cx="160" cy="16" r="4.0" fill="#FFFFFF" stroke="#C5AD79" stroke-width="0.6" />
+  <circle cx="160" cy="16" r="1.8" fill="#C5AD79" />
+</svg>

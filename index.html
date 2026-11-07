@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="css/main.css?v=2.0">
+  <link rel="stylesheet" href="css/main.css?v=3.0">
 
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>💍</text></svg>">
@@ -170,174 +170,209 @@
     </section>
 
 
-    <!-- ── 2. FAMILY INVITATION — JOURNEY VERSION ──────────────── -->
-    <section id="invitation" class="section bg-pearl" aria-labelledby="invite-heading" data-section="invitation">
-      <!-- Romantic floating hearts & sparkles canvas -->
-      <canvas id="romance-canvas" class="romance-canvas" aria-hidden="true"></canvas>
+    <!-- ── 1. PERSONAL INVITATION — AN OPEN LETTER ────────────── -->
+    <section id="invitation" class="middle-section section-invitation" aria-labelledby="invite-heading" data-section="invitation">
+      <!-- Draped Pale-Blue Silk Backdrop -->
+      <div class="silk-backdrop" aria-hidden="true"></div>
 
-      <div class="section-inner invitation-container royal-page-frame">
-        <!-- Royal Palace Manuscript HD Vector Corners & Arch Crests -->
-        <div class="royal-corner royal-corner-tl" aria-hidden="true"></div>
-        <div class="royal-corner royal-corner-tr" aria-hidden="true"></div>
-        <div class="royal-corner royal-corner-bl" aria-hidden="true"></div>
-        <div class="royal-corner royal-corner-br" aria-hidden="true"></div>
-        <div class="royal-crest-top" aria-hidden="true"></div>
-        <div class="royal-crest-bottom" aria-hidden="true"></div>
+      <div class="section-container letter-layout">
+        <!-- Physical Ivory Letter Container -->
+        <article class="open-letter-paper" role="article" aria-label="Wedding Invitation Letter from Srishti Jain &amp; Himanshu Jain">
+          
+          <!-- Tactile Floral Corners (Hydrangea & White Rose) -->
+          <div class="letter-corner letter-corner-tl" aria-hidden="true"></div>
+          <div class="letter-corner letter-corner-tr" aria-hidden="true"></div>
+          <div class="letter-corner letter-corner-bl" aria-hidden="true"></div>
+          <div class="letter-corner letter-corner-br" aria-hidden="true"></div>
 
-        <!-- Auspicious Traditional Blessing Banner -->
-        <p class="auspicious-mantra" aria-label="Shree Mahaviraya Namah - Shubh Vivah">
-          ॥ श्री महावीराय नमः · शुभ विवाह ॥
-        </p>
+          <!-- Letterhead: Sacred Jain Mantra & Embossed S&H Monogram -->
+          <header class="letter-header">
+            <p class="letter-mantra" aria-label="Shree Mahaviraya Namah - Shubh Vivah">
+              ॥ श्री महावीराय नमः · शुभ विवाह ॥
+            </p>
+            <div class="letter-monogram-wrap" aria-hidden="true">
+              <img src="assets/images/monogram_sh.svg" alt="S &amp; H Monogram" class="letter-monogram" width="76" height="76">
+            </div>
+            <p class="letter-eyebrow">A Special Invitation</p>
+            <h2 id="invite-heading" class="letter-title">
+              Our happiest day,<br>made complete by you.
+            </h2>
+          </header>
 
-        <p class="section-label">Wedding Invitation</p>
+          <!-- Letter Body Message -->
+          <div class="letter-body">
+            <p class="letter-message">
+              To the family who raised us, the relatives who have cheered us on, and the friends who became family—this celebration belongs to you too. As we begin our forever, we would love to have you beside us, filling the day with laughter, warm hugs, and your blessings.
+            </p>
 
-        <div class="ornament" aria-hidden="true">
-          <span class="ornament-diamond"></span>
-          <span class="ornament-star">✦</span>
-          <span class="ornament-diamond"></span>
-        </div>
+            <!-- Honored Family Details -->
+            <div class="letter-family-details" aria-label="Bride and Groom Family Lineage">
+              <div class="family-column">
+                <span class="family-name">Srishti Jain</span>
+                <span class="family-parentage">D/O Manisha and Ajay Jain</span>
+              </div>
+              <div class="family-divider" aria-hidden="true">✦</div>
+              <div class="family-column">
+                <span class="family-name">Himanshu Jain</span>
+                <span class="family-parentage">S/O Pooja and Pramodh Kumar Jain</span>
+              </div>
+            </div>
 
-        <h2 id="invite-heading" class="invite-editorial-heading">
-          Our dearest people.<br>Our happiest beginning.
-        </h2>
+            <!-- Letter Closing Signature -->
+            <div class="letter-closing">
+              <p class="letter-signoff">With love,</p>
+              <p class="letter-couple-signatures">Srishti Jain &amp; Himanshu Jain</p>
+            </div>
+          </div>
 
-        <div class="invite-editorial-body">
-          <p class="invite-lead">
-            To our beloved family, relatives and friends—this celebration would not be complete without you.
-          </p>
-          <p class="invite-main-paragraph">
-            As <strong class="name-highlight">Srishti Jain</strong> and <strong class="name-highlight">Himanshu Jain</strong> begin a new chapter, we invite you to bring your blessings, your laughter and your warmest hugs.
-          </p>
-          <p class="invite-sub-paragraph">
-            Come celebrate, make memories, and fill our wedding day with the love of the people who mean the most to us.
-          </p>
-        </div>
+          <!-- Refined Interactive Blessings Shower -->
+          <footer class="letter-footer">
+            <button id="send-blessing-btn" type="button" class="btn-blessing" aria-label="Shower warm blessings for Srishti and Himanshu">
+              <span class="btn-blessing-sparkle" aria-hidden="true">✦</span> Shower Blessings
+            </button>
+            <p id="blessing-toast" class="blessing-toast" aria-live="polite"></p>
+          </footer>
 
-        <div class="ornament" aria-hidden="true">
-          <span class="ornament-diamond"></span>
-          <span class="ornament-star">✦</span>
-          <span class="ornament-diamond"></span>
-        </div>
-
-        <p class="invite-editorial-closing">
-          Your presence is the most beautiful part of our celebration.
-        </p>
-
-        <!-- Romantic Interactive Blessings Shower -->
-        <div class="blessing-interaction-wrap">
-          <button id="send-blessing-btn" type="button" class="btn-gold blessing-btn" aria-label="Send your warm blessings to Srishti and Himanshu">
-            <span class="blessing-heart-icon">♥</span> Shower Blessings
-          </button>
-          <p id="blessing-toast" class="blessing-toast" aria-live="polite"></p>
-        </div>
-
+        </article>
       </div>
     </section>
 
+    <!-- Subtle Floral Section Divider -->
+    <div class="section-floral-divider" aria-hidden="true">
+      <img src="assets/images/floral_divider.svg" alt="" width="260" height="26">
+    </div>
 
-    <!-- ── 3. CAR JOURNEY — JOURNEY VERSION ONLY ───────────────── -->
-    <section id="journey" class="section" aria-labelledby="journey-heading" data-section="journey">
-      <div class="section-inner journey-frame-wrap royal-page-frame">
-        <!-- Royal Palace Manuscript HD Vector Corners & Arch Crests -->
-        <div class="royal-corner royal-corner-tl" aria-hidden="true"></div>
-        <div class="royal-corner royal-corner-tr" aria-hidden="true"></div>
-        <div class="royal-corner royal-corner-bl" aria-hidden="true"></div>
-        <div class="royal-corner royal-corner-br" aria-hidden="true"></div>
-        <div class="royal-crest-top" aria-hidden="true"></div>
-        <div class="royal-crest-bottom" aria-hidden="true"></div>
 
-        <div class="journey-text">
-          <p class="section-label fade-up">A New Chapter</p>
-          <h2 id="journey-heading" class="section-title fade-up">Our Journey Begins</h2>
+    <!-- ── 2. CAR JOURNEY — THE SIGNATURE SCENE ───────────────── -->
+    <section id="journey" class="middle-section section-journey" aria-labelledby="journey-heading" data-section="journey">
+      <div class="section-container journey-layout">
+        
+        <header class="section-header text-center">
+          <p class="section-tagline">A New Chapter</p>
+          <h2 id="journey-heading" class="section-heading">Our Journey Begins</h2>
+          <p class="section-subtext">Following the path towards our forever</p>
+        </header>
+
+        <!-- Immersive Garden Driveway Stage with Layered Depth -->
+        <div id="journey-stage" class="journey-stage" role="region" aria-label="Interactive wedding car journey along royal garden driveway">
+          
+          <!-- Background: Soft Palace Garden Architecture -->
+          <div class="driveway-backdrop" aria-hidden="true"></div>
+
+          <!-- Midground: Curved Paved Road SVG with Light Path & Trail -->
+          <svg id="journey-svg" class="journey-road-svg" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"></svg>
+
+          <!-- The Vintage Wedding Car (Dimensional pearl-white roadster with white flowers & powder-blue ribbons) -->
+          <div id="car-container" class="car-container" aria-hidden="true"></div>
+
+          <!-- Foreground: Romantic Garden Flowers (White Roses & Blue Hydrangeas) -->
+          <div class="driveway-foreground-flowers" aria-hidden="true"></div>
+
         </div>
 
-        <!-- Animation Stage for 3D Decorated Wedding Car -->
-        <div id="journey-stage" aria-label="Animated 3D wedding car journey">
-          <svg id="journey-svg" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"></svg>
-
-          <!-- Dynamic 3D Decorated Car Container (ivory/blue with champagne accents) -->
-          <div id="car-container" aria-hidden="true"></div>
+        <!-- 3 Sequential Revealing Cards as the Car Travels -->
+        <div class="journey-cards-strip" aria-live="polite">
+          <div id="reveal-card-1" class="journey-reveal-card" data-step="1">
+            <span class="card-icon">✦</span>
+            <p class="card-text">With our favourite people…</p>
+          </div>
+          <div id="reveal-card-2" class="journey-reveal-card" data-step="2">
+            <span class="card-icon">💍</span>
+            <p class="card-text">Towards our forever</p>
+          </div>
+          <div id="reveal-card-3" class="journey-reveal-card" data-step="3">
+            <span class="card-icon">📅</span>
+            <p class="card-text">05 December 2026</p>
+          </div>
         </div>
 
-        <!-- Reveals -->
-        <div class="journey-reveals">
-          <p id="journey-greeting" class="journey-greeting" aria-live="polite">
-            A new journey begins — save the date
-          </p>
-          <p id="journey-date-reveal" class="journey-date-reveal" aria-live="polite">
-            Saturday · 5 December 2026
-          </p>
-        </div>
-
-        <!-- Replay Button -->
-        <div class="journey-controls">
-          <button id="journey-replay-btn" type="button" class="btn-outline btn-outline-gold" aria-label="Replay car journey animation">
+        <!-- Replay Controls -->
+        <div class="journey-actions">
+          <button id="journey-replay-btn" type="button" class="btn-journey-replay" aria-label="Replay car journey animation">
             ↺ Replay Journey
           </button>
         </div>
 
-        <!-- Fallback for no-JS / screen readers -->
         <noscript>
-          <p style="text-align:center; padding:1rem; font-family:Georgia,serif; color:#173B55;">
-            Save the Date — Saturday, 5 December 2026
-          </p>
+          <p class="noscript-fallback">Save the Date — Saturday, 5 December 2026</p>
         </noscript>
+
       </div>
     </section>
 
+    <!-- Subtle Floral Section Divider -->
+    <div class="section-floral-divider" aria-hidden="true">
+      <img src="assets/images/floral_divider.svg" alt="" width="260" height="26">
+    </div>
 
-    <!-- ── 4. CALENDAR — JOURNEY VERSION ONLY ──────────────────── -->
-    <section id="calendar-section" class="section bg-pearl" aria-labelledby="cal-heading" data-section="calendar">
-      <div class="section-inner calendar-frame-wrap royal-page-frame">
-        <!-- Royal Palace Manuscript HD Vector Corners & Arch Crests -->
-        <div class="royal-corner royal-corner-tl" aria-hidden="true"></div>
-        <div class="royal-corner royal-corner-tr" aria-hidden="true"></div>
-        <div class="royal-corner royal-corner-bl" aria-hidden="true"></div>
-        <div class="royal-corner royal-corner-br" aria-hidden="true"></div>
-        <div class="royal-crest-top" aria-hidden="true"></div>
-        <div class="royal-crest-bottom" aria-hidden="true"></div>
 
-        <p class="section-label fade-up">Mark Your Calendar</p>
-        <h2 id="cal-heading" class="section-title fade-up">December 2026</h2>
+    <!-- ── 3. CALENDAR — A DATE CHOSEN BY THE HEART ───────────── -->
+    <section id="calendar-section" class="middle-section section-calendar" aria-labelledby="cal-heading" data-section="calendar">
+      <div class="section-container calendar-layout">
+        
+        <header class="section-header text-center">
+          <p class="section-tagline">Mark Your Calendar</p>
+          <h2 id="cal-heading" class="section-heading">December 2026</h2>
+          <p class="section-subtext">A Date Chosen by the Heart</p>
+        </header>
 
-        <!-- Interactive December 2026 Calendar Card -->
-        <div class="calendar-card" id="calendar-card" role="region" aria-label="December 2026 wedding calendar">
-          <div class="cal-header" aria-hidden="true">
-            <div class="cal-header-year">2026</div>
-            <div class="cal-header-month">December</div>
-          </div>
+        <!-- Physical Stationery Calendar Desk -->
+        <div class="calendar-desk">
+          <div class="calendar-stationery-card" id="calendar-card" role="region" aria-label="December 2026 wedding calendar">
+            
+            <!-- Fine Floral Corner Touches -->
+            <div class="cal-card-corner cal-card-corner-tl" aria-hidden="true"></div>
+            <div class="cal-card-corner cal-card-corner-tr" aria-hidden="true"></div>
 
-          <!-- Weekday Headers -->
-          <div class="cal-weekdays" role="row" aria-label="Days of the week">
-            <div class="cal-weekday" abbr="Sunday">Sun</div>
-            <div class="cal-weekday" abbr="Monday">Mon</div>
-            <div class="cal-weekday" abbr="Tuesday">Tue</div>
-            <div class="cal-weekday" abbr="Wednesday">Wed</div>
-            <div class="cal-weekday" abbr="Thursday">Thu</div>
-            <div class="cal-weekday" abbr="Friday">Fri</div>
-            <div class="cal-weekday" abbr="Saturday">Sat</div>
-          </div>
+            <div class="cal-card-header" aria-hidden="true">
+              <div class="cal-card-month">December</div>
+              <div class="cal-card-year">2026</div>
+            </div>
 
-          <!-- Date Grid built by calendar.js with animated searching heart -->
-          <div id="cal-grid" class="cal-grid" role="grid" aria-label="December 2026 calendar dates"></div>
+            <!-- Weekday Headers -->
+            <div class="cal-weekdays-row" role="row" aria-label="Days of the week">
+              <span class="cal-col-header" abbr="Sunday">Sun</span>
+              <span class="cal-col-header" abbr="Monday">Mon</span>
+              <span class="cal-col-header" abbr="Tuesday">Tue</span>
+              <span class="cal-col-header" abbr="Wednesday">Wed</span>
+              <span class="cal-col-header" abbr="Thursday">Thu</span>
+              <span class="cal-col-header" abbr="Friday">Fri</span>
+              <span class="cal-col-header" abbr="Saturday">Sat</span>
+            </div>
 
-          <div class="cal-footer">
-            <span class="cal-date-label">Saturday, 5 December 2026</span>
-            <button id="cal-replay-btn" type="button" class="cal-replay-btn" aria-label="Replay heart calendar animation">
-              ↺ Replay
-            </button>
+            <!-- Date Grid built by calendar.js with animated searching blue heart -->
+            <div id="cal-grid" class="cal-grid-body" role="grid" aria-label="December 2026 calendar dates"></div>
+
+            <!-- Calendar Bottom Note: Settled Quote & Replay -->
+            <div class="cal-stationery-footer">
+              <p id="cal-finish-line" class="cal-finish-quote">
+                One date. Two hearts. Everyone we love.
+              </p>
+              <div class="cal-date-highlight">
+                <span class="cal-confirmed-date">Saturday, 5 December 2026</span>
+                <button id="cal-replay-btn" type="button" class="btn-cal-replay" aria-label="Replay heart calendar animation">
+                  ↺ Replay
+                </button>
+              </div>
+            </div>
+
           </div>
         </div>
 
-        <!-- Downloads: Valid All-Day Calendar Event & Separate Wedding Details PDF -->
-        <div class="calendar-action-buttons">
-          <button id="cal-ics-btn" type="button" class="btn-ocean" aria-label="Download calendar event file (.ics) for 5 December 2026">
+        <!-- Working Calendar Downloads & Actions -->
+        <div class="calendar-button-cluster">
+          <button id="cal-ics-btn" type="button" class="btn-primary-blue" aria-label="Download calendar event file (.ics) for 5 December 2026">
             📅 Add to Calendar (.ics)
           </button>
-          <a id="cal-gcal-btn" class="btn-outline" target="_blank" rel="noopener noreferrer" aria-label="Open in Google Calendar (opens in new tab)">
+          <a id="cal-gcal-btn"
+             class="btn-secondary-blue"
+             target="_blank"
+             rel="noopener noreferrer"
+             href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Srishti+Jain+%26+Himanshu+Jain+Wedding&dates=20261205/20261206&details=Celebrating+the+wedding+of+Srishti+Jain+and+Himanshu+Jain.+Your+presence+is+our+joy!&location=Shehanshah+Palace"
+             aria-label="Open wedding in Google Calendar (opens in new tab)">
             ✦ Google Calendar
           </a>
-          <button id="cal-pdf-btn" type="button" class="btn-gold" aria-label="Download wedding details as a beautifully formatted PDF">
+          <button id="cal-pdf-btn" type="button" class="btn-accent-champagne" aria-label="Download wedding details as a beautifully formatted PDF">
             ↓ Download Wedding Details (PDF)
           </button>
         </div>
@@ -345,151 +380,202 @@
       </div>
     </section>
 
-
-    <!-- ── 5. EXISTING GITHUB SECTION 5 (COUNTDOWN TIMER) ───────── -->
-    <section id="countdown-section" class="section" aria-labelledby="cd-heading" data-section="countdown">
-      <div class="section-inner countdown-frame-wrap royal-page-frame">
-        <!-- Royal Palace Manuscript HD Vector Corners & Arch Crests -->
-        <div class="royal-corner royal-corner-tl" aria-hidden="true"></div>
-        <div class="royal-corner royal-corner-tr" aria-hidden="true"></div>
-        <div class="royal-corner royal-corner-bl" aria-hidden="true"></div>
-        <div class="royal-corner royal-corner-br" aria-hidden="true"></div>
-        <div class="royal-crest-top" aria-hidden="true"></div>
-        <div class="royal-crest-bottom" aria-hidden="true"></div>
-
-        <p class="section-label">Counting Down</p>
-        <h2 id="cd-heading" class="section-title">The Big Day Is Near</h2>
-
-        <div class="countdown-grid" role="timer" aria-label="Countdown to 5 December 2026">
-          <div class="countdown-unit">
-            <span id="cd-days" class="countdown-num" aria-label="days">00</span>
-            <span class="countdown-label">Days</span>
-          </div>
-          <span class="countdown-sep" aria-hidden="true">:</span>
-          <div class="countdown-unit">
-            <span id="cd-hrs" class="countdown-num" aria-label="hours">00</span>
-            <span class="countdown-label">Hours</span>
-          </div>
-          <span class="countdown-sep" aria-hidden="true">:</span>
-          <div class="countdown-unit">
-            <span id="cd-mins" class="countdown-num" aria-label="minutes">00</span>
-            <span class="countdown-label">Minutes</span>
-          </div>
-          <span class="countdown-sep" aria-hidden="true">:</span>
-          <div class="countdown-unit">
-            <span id="cd-secs" class="countdown-num" aria-label="seconds">00</span>
-            <span class="countdown-label">Seconds</span>
-          </div>
-        </div>
-
-        <p id="cd-message" style="font-family:var(--ff-serif); font-style:italic; color:var(--clr-ocean-dark); margin-top:0.5rem;"></p>
-
-      </div>
-    </section>
+    <!-- Subtle Floral Section Divider -->
+    <div class="section-floral-divider" aria-hidden="true">
+      <img src="assets/images/floral_divider.svg" alt="" width="260" height="26">
+    </div>
 
 
-    <!-- ── 6. VENUE — EXISTING GITHUB SECTION 8 ─────────────────── -->
-    <section id="venue-section" class="section bg-pearl" aria-labelledby="venue-heading" data-section="venue">
-      <div class="section-inner venue-frame-wrap royal-page-frame">
-        <!-- Royal Palace Manuscript HD Vector Corners & Arch Crests -->
-        <div class="royal-corner royal-corner-tl" aria-hidden="true"></div>
-        <div class="royal-corner royal-corner-tr" aria-hidden="true"></div>
-        <div class="royal-corner royal-corner-bl" aria-hidden="true"></div>
-        <div class="royal-corner royal-corner-br" aria-hidden="true"></div>
-        <div class="royal-crest-top" aria-hidden="true"></div>
-        <div class="royal-crest-bottom" aria-hidden="true"></div>
+    <!-- ── 4. COUNTDOWN — A ROMANTIC PAUSE ────────────────────── -->
+    <section id="countdown-section" class="middle-section section-countdown" aria-labelledby="cd-heading" data-section="countdown">
+      <div class="section-container countdown-layout">
+        
+        <!-- Softly Draped Garden Alcove Frame -->
+        <div class="countdown-alcove">
+          <header class="section-header text-center">
+            <p class="section-tagline">Save The Date</p>
+            <h2 id="cd-heading" class="section-heading">A little closer to forever.</h2>
+            <p class="section-subtext">Counting the days until we celebrate together.</p>
+          </header>
 
-        <p class="section-label">Celebration Details</p>
-        <h2 id="venue-heading" class="section-title">Venue &amp; Directions</h2>
+          <div class="countdown-dials" role="timer" aria-label="Countdown to 5 December 2026 wedding celebration">
+            
+            <div class="countdown-dial">
+              <span id="cd-days" class="dial-number" aria-label="days">00</span>
+              <span class="dial-label">Days</span>
+            </div>
+            <span class="dial-separator" aria-hidden="true">:</span>
 
-        <!-- Translucent Blended Card — No Harsh Solid White Box -->
-        <div class="venue-card venue-blended-card" aria-label="Wedding celebration details">
+            <div class="countdown-dial">
+              <span id="cd-hrs" class="dial-number" aria-label="hours">00</span>
+              <span class="dial-label">Hours</span>
+            </div>
+            <span class="dial-separator" aria-hidden="true">:</span>
 
-          <!-- Confirmed Date -->
-          <div class="detail-row">
-            <div class="detail-icon" aria-hidden="true">◈</div>
-            <div class="detail-label">Date</div>
-            <div class="detail-value">Saturday, 5 December 2026</div>
+            <div class="countdown-dial">
+              <span id="cd-mins" class="dial-number" aria-label="minutes">00</span>
+              <span class="dial-label">Minutes</span>
+            </div>
+            <span class="dial-separator" aria-hidden="true">:</span>
+
+            <div class="countdown-dial">
+              <span id="cd-secs" class="dial-number" aria-label="seconds">00</span>
+              <span class="dial-label">Seconds</span>
+            </div>
+
           </div>
 
-          <!-- Confirmed Venue -->
-          <div class="detail-row">
-            <div class="detail-icon" aria-hidden="true">◈</div>
-            <div class="detail-label">Venue</div>
-            <div id="detail-venue-name" class="detail-value">Shehanshah Palace</div>
-          </div>
-
-          <!-- Directions using confirmed link & direct maps search fallback -->
-          <div class="venue-actions-row">
-            <a id="venue-map-btn"
-               href="https://maps.app.goo.gl/DZTHWSUSbHaPdhuF6"
-               target="_blank"
-               rel="noopener noreferrer"
-               referrerpolicy="no-referrer"
-               class="btn-ocean"
-               aria-label="Open venue location in Google Maps (opens in new tab)">
-              ◎ View on Map
-            </a>
-            <a id="venue-map-direct-btn"
-               href="https://www.google.com/maps/search/?api=1&query=Shehanshah+Palace"
-               target="_blank"
-               rel="noopener noreferrer"
-               referrerpolicy="no-referrer"
-               class="btn-gold"
-               aria-label="Search Shehanshah Palace on Google Maps">
-              ✦ Maps Direct
-            </a>
-            <button id="copy-map-btn" type="button" class="btn-outline" aria-label="Copy location link to clipboard">
-              ⎘ Copy Location Link
-            </button>
-          </div>
-          <p id="copy-map-feedback" class="copy-feedback" aria-live="polite"></p>
+          <p id="cd-message" class="countdown-status" aria-live="polite"></p>
 
         </div>
 
       </div>
     </section>
 
+    <!-- Subtle Floral Section Divider -->
+    <div class="section-floral-divider" aria-hidden="true">
+      <img src="assets/images/floral_divider.svg" alt="" width="260" height="26">
+    </div>
 
-    <!-- ── 7. INVITATION KEEPSAKE — JOURNEY VERSION ────────────── -->
-    <section id="card-section" class="section" aria-labelledby="card-heading" data-section="card">
-      <div class="section-inner card-keepsake-frame royal-page-frame">
-        <!-- Royal Palace Manuscript HD Vector Corners & Arch Crests -->
-        <div class="royal-corner royal-corner-tl" aria-hidden="true"></div>
-        <div class="royal-corner royal-corner-tr" aria-hidden="true"></div>
-        <div class="royal-corner royal-corner-bl" aria-hidden="true"></div>
-        <div class="royal-corner royal-corner-br" aria-hidden="true"></div>
-        <div class="royal-crest-top" aria-hidden="true"></div>
-        <div class="royal-crest-bottom" aria-hidden="true"></div>
 
-        <p class="section-label">Invitation Keepsake</p>
-        <h2 id="card-heading" class="section-title">A Keepsake for You</h2>
+    <!-- ── 5. VENUE — BEAUTIFUL AND USEFUL ────────────────────── -->
+    <section id="venue-section" class="middle-section section-venue" aria-labelledby="venue-heading" data-section="venue">
+      <div class="section-container venue-layout">
+        
+        <header class="section-header text-center">
+          <p class="section-tagline">Travel &amp; Location</p>
+          <h2 id="venue-heading" class="section-heading">Venue &amp; Directions</h2>
+          <p class="section-subtext">We look forward to welcoming you</p>
+        </header>
 
-        <div style="margin-top:var(--space-md);">
-          <!-- Directly displayed uploaded invitation card with royal presentation frame -->
-          <div class="card-preview-wrap royal-card-frame" aria-label="Illustrated wedding invitation card preview">
-            <img id="card-preview-img"
-                 src="assets/images/invitation_card.png"
-                 alt="Srishti Jain &amp; Himanshu Jain Wedding Invitation Keepsake Card"
-                 class="keepsake-img-display"
-                 width="613"
-                 height="1024">
+        <!-- Travel Invitation Card -->
+        <article class="venue-travel-card" role="article" aria-label="Wedding Venue: Shehanshah Palace">
+          
+          <div class="venue-card-grid">
+            
+            <!-- Left Column: Architectural Palace Illustration -->
+            <div class="venue-visual-frame">
+              <div class="venue-arch-window">
+                <img src="assets/images/palace_arch_frame.png" alt="Shehanshah Palace Architectural Arch" class="venue-arch-img" width="380" height="360" loading="lazy">
+              </div>
+              <p class="venue-visual-caption">Artistic Illustration · Shehanshah Palace</p>
+            </div>
+
+            <!-- Right Column: Confirmed Venue Details & Direct Directions -->
+            <div class="venue-info-column">
+              <div class="venue-badge">✦ Auspicious Destination ✦</div>
+              <h3 class="venue-title">Shehanshah Palace</h3>
+              <p class="venue-date-highlight">Saturday, 5 December 2026</p>
+              <p class="venue-location-state">Rajasthan, India</p>
+
+              <div class="venue-details-list">
+                <div class="venue-detail-item">
+                  <span class="detail-bullet">◈</span>
+                  <div class="detail-text">
+                    <strong>Confirmed Date:</strong> Saturday, 5 December 2026
+                  </div>
+                </div>
+                <div class="venue-detail-item">
+                  <span class="detail-bullet">◈</span>
+                  <div class="detail-text">
+                    <strong>Celebration:</strong> Auspicious wedding ceremonies
+                  </div>
+                </div>
+              </div>
+
+              <!-- Clear, Reliable Directions & Location Actions -->
+              <div class="venue-button-row">
+                <a id="venue-map-btn"
+                   href="https://maps.app.goo.gl/sGMF5VTTgQhBbkMn8"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   referrerpolicy="no-referrer"
+                   class="btn-primary-blue"
+                   aria-label="Get directions to Shehanshah Palace on Google Maps (opens in new tab)">
+                  ◎ Get Directions
+                </a>
+                <a id="venue-map-direct-btn"
+                   href="https://www.google.com/maps/search/?api=1&query=Shehanshah+Palace"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   referrerpolicy="no-referrer"
+                   class="btn-secondary-blue"
+                   aria-label="Search Shehanshah Palace on Google Maps">
+                  ✦ Search on Maps
+                </a>
+                <button id="copy-map-btn" type="button" class="btn-quiet-outline" aria-label="Copy location link to clipboard">
+                  ⎘ Copy Location Link
+                </button>
+              </div>
+              <p id="copy-map-feedback" class="copy-feedback" aria-live="polite"></p>
+
+            </div>
+
+          </div>
+
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Subtle Floral Section Divider -->
+    <div class="section-floral-divider" aria-hidden="true">
+      <img src="assets/images/floral_divider.svg" alt="" width="260" height="26">
+    </div>
+
+
+    <!-- ── 6. KEEPSAKE — A PERSONAL MEMENTO ───────────────────── -->
+    <section id="card-section" class="middle-section section-keepsake" aria-labelledby="card-heading" data-section="card">
+      <div class="section-container keepsake-layout">
+        
+        <header class="section-header text-center">
+          <p class="section-tagline">Invitation Keepsake</p>
+          <h2 id="card-heading" class="section-heading">A little piece of our celebration.</h2>
+          <p class="section-subtext">Keep our invitation close. We can’t wait to celebrate with you.</p>
+        </header>
+
+        <!-- Tasteful Stationery Display on Silk -->
+        <div class="keepsake-silk-stage">
+          
+          <div class="card-display-envelope" role="region" aria-label="Wedding Invitation Card Keepsake">
+            <div id="card-preview-wrap" class="card-art-frame" role="button" tabindex="0" aria-label="Tap to inspect full invitation card in high resolution">
+              <img id="card-preview-img"
+                   src="assets/images/invitation_card.png"
+                   alt="Srishti Jain &amp; Himanshu Jain Wedding Invitation Keepsake Card"
+                   class="keepsake-card-image"
+                   width="613"
+                   height="1024"
+                   loading="lazy">
+              <div class="card-tap-hint" aria-hidden="true">
+                <span>🔍 Tap to enlarge</span>
+              </div>
+            </div>
             <canvas id="card-canvas" style="display:none;" aria-hidden="true"></canvas>
           </div>
 
-          <!-- Direct Downloads: High-Res PNG & Printable PDF -->
-          <div class="card-download-btns">
-            <button id="card-png-btn" type="button" class="btn-gold" aria-label="Download invitation card as high-resolution PNG image">
+          <!-- Crisp PNG & Valid PDF Downloads -->
+          <div class="keepsake-actions">
+            <button id="card-png-btn" type="button" class="btn-primary-blue" aria-label="Download invitation card as high-resolution PNG image">
               ↓ Save as PNG
             </button>
-            <button id="card-pdf-btn" type="button" class="btn-outline btn-outline-gold" aria-label="Download invitation card as printable PDF document">
+            <button id="card-pdf-btn" type="button" class="btn-accent-champagne" aria-label="Download invitation card as printable PDF document">
               ↓ Save as PDF
             </button>
           </div>
+
         </div>
 
       </div>
     </section>
+
+    <!-- Lightbox Modal for Tap-to-Enlarge Keepsake -->
+    <div id="card-lightbox" class="card-lightbox hidden" role="dialog" aria-modal="true" aria-label="Enlarged Wedding Invitation Card">
+      <div class="lightbox-overlay" id="lightbox-close-overlay"></div>
+      <div class="lightbox-content">
+        <button id="lightbox-close-btn" class="lightbox-close-btn" type="button" aria-label="Close enlarged card view">&times;</button>
+        <img id="lightbox-img" src="assets/images/invitation_card.png" alt="Enlarged Srishti &amp; Himanshu Wedding Invitation Card" class="lightbox-card-image">
+      </div>
+    </div>
 
 
     <!-- ── 8. FINALE — NEW DESIGN ──────────────────────────────── -->
@@ -525,7 +611,7 @@
 
           <div class="finale-venue-actions">
             <a id="finale-map-btn"
-               href="https://maps.app.goo.gl/DZTHWSUSbHaPdhuF6"
+               href="https://maps.app.goo.gl/sGMF5VTTgQhBbkMn8"
                target="_blank"
                rel="noopener noreferrer"
                referrerpolicy="no-referrer"
@@ -587,17 +673,17 @@
   <!-- ════════════════════════════════════════════════════════════
        SCRIPTS (Config → Core Modules → Init)
        ════════════════════════════════════════════════════════════ -->
-  <script src="js/config.js?v=2.3"></script>
-  <script src="js/envelope.js?v=2.3"></script>
-  <script src="js/petals.js?v=2.3"></script>
-  <script src="js/car-path.js?v=2.3"></script>
-  <script src="js/calendar.js?v=2.3"></script>
-  <script src="js/countdown.js?v=2.3"></script>
-  <script src="js/card.js?v=2.3"></script>
-  <script src="js/finale.js?v=2.3"></script>
-  <script src="js/music.js?v=2.3"></script>
-  <script src="js/cursor.js?v=2.3"></script>
-  <script src="js/app.js?v=2.3"></script>
+  <script src="js/config.js?v=3.0"></script>
+  <script src="js/envelope.js?v=3.0"></script>
+  <script src="js/petals.js?v=3.0"></script>
+  <script src="js/car-path.js?v=3.0"></script>
+  <script src="js/calendar.js?v=3.0"></script>
+  <script src="js/countdown.js?v=3.0"></script>
+  <script src="js/card.js?v=3.0"></script>
+  <script src="js/finale.js?v=3.0"></script>
+  <script src="js/music.js?v=3.0"></script>
+  <script src="js/cursor.js?v=3.0"></script>
+  <script src="js/app.js?v=3.0"></script>
 
 </body>
 </html>

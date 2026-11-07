@@ -18,8 +18,9 @@
   const stage      = document.getElementById('journey-stage');
   const svgEl      = document.getElementById('journey-svg');
   const carWrapper = document.getElementById('car-container');
-  const greeting   = document.getElementById('journey-greeting');
-  const dateReveal = document.getElementById('journey-date-reveal');
+  const card1      = document.getElementById('reveal-card-1');
+  const card2      = document.getElementById('reveal-card-2');
+  const card3      = document.getElementById('reveal-card-3');
   const replayBtn  = document.getElementById('journey-replay-btn');
 
   if (!section || !stage || !svgEl || !carWrapper) return;
@@ -278,13 +279,13 @@
         <circle cx="88" cy="27" r="0.8" fill="#FFFDF7"/>
 
         <!-- Bride (Crimson Bridal Attire, Golden Dupatta Veil, Floral Hair Gajra) -->
-        <ellipse cx="73" cy="39" rx="3.5" ry="4.4" fill="#8B1E2D"/>
+        <ellipse cx="73" cy="39" rx="3.5" ry="4.4" fill="#FFFFFF"/>
         <!-- Golden Dupatta Veil draping behind -->
         <path d="M 69 39 Q 67 46 72 48" stroke="#DEC593" stroke-width="1.5" fill="none"/>
         <circle cx="70" cy="37" r="1.1" fill="#FFFDF7"/> <!-- Gajra flower -->
 
         <!-- V-Shaped Wedding Bonnet Ribbons (Windshield to Hood Grille) -->
-        <path d="M 98 43 Q 132 45 168 53" fill="none" stroke="#FFFDF7" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M 98 43 Q 132 45 168 53" fill="none" stroke="#CBE0F5" stroke-width="2.8" stroke-linecap="round"/>
         <path d="M 98 43 Q 132 45 168 53" fill="none" stroke="#C7AA72" stroke-width="1.0" stroke-dasharray="4 2"/>
 
         <!-- Big Vintage Round Chrome Headlamp with glowing warm light -->
@@ -308,7 +309,7 @@
         <path d="M 13 55 C 13 52, 9 51, 7 54 C 5 51, 1 52, 1 55 C 1 59, 7 63, 7 65 C 7 63, 13 59, 13 55 Z" fill="#3D87AE" stroke="#C7AA72" stroke-width="0.8"/>
         <!-- Trailing Silk Satin Ribbons & Bells -->
         <path d="M 11 64 Q 3 67 -2 63 Q -6 59 -12 65" fill="none" stroke="#DEC593" stroke-width="1.6" stroke-linecap="round"/>
-        <path d="M 13 66 Q 5 72 0 70 Q -4 68 -9 74" fill="none" stroke="#3D87AE" stroke-width="1.3" stroke-linecap="round"/>
+        <path d="M 13 66 Q 5 72 0 70 Q -4 68 -9 74" fill="none" stroke="#A9C9E5" stroke-width="1.5" stroke-linecap="round"/>
         <circle cx="-12" cy="65" r="1.2" fill="#FFD700"/> <!-- Golden bell -->
         <circle cx="-9" cy="74" r="1.0" fill="#FFD700"/>
 
@@ -319,13 +320,13 @@
 
         <!-- Blooming Roses on Hood: Crimson Velvet, Blush Pink, Champagne & Jasmine -->
         <!-- Velvet Crimson Rose 1 -->
-        <circle cx="130" cy="43" r="4.2" fill="#8B1E2D"/>
-        <circle cx="130" cy="43" r="2.5" fill="#B2283E"/>
-        <circle cx="130" cy="43" r="1.2" fill="#E8899E"/>
+        <circle cx="130" cy="43" r="4.2" fill="#FFFFFF"/>
+        <circle cx="130" cy="43" r="2.5" fill="#F2F6FA"/>
+        <circle cx="130" cy="43" r="1.2" fill="#99BFE3"/>
 
         <!-- Blush Pink Rose 2 -->
-        <circle cx="140" cy="41" r="4.6" fill="#E8899E"/>
-        <circle cx="140" cy="41" r="2.8" fill="#F3AFC0"/>
+        <circle cx="140" cy="41" r="4.6" fill="#99BFE3"/>
+        <circle cx="140" cy="41" r="2.8" fill="#CBE0F5"/>
         <circle cx="140" cy="41" r="1.4" fill="#FFFDF7"/>
 
         <!-- Champagne Gold Rose 3 -->
@@ -334,8 +335,8 @@
         <circle cx="150" cy="43" r="1.0" fill="#FFFDF7"/>
 
         <!-- Deep Scarlet Rose 4 -->
-        <circle cx="160" cy="47" r="3.8" fill="#701622"/>
-        <circle cx="160" cy="47" r="2.0" fill="#9C2433"/>
+        <circle cx="160" cy="47" r="3.8" fill="#FFFFFF"/>
+        <circle cx="160" cy="47" r="2.0" fill="#8BB4D9"/>
 
         <!-- Pearl White Jasmine Florets -->
         <circle cx="123" cy="46" r="2.4" fill="#FFFDF7" stroke="#DEC593" stroke-width="0.5"/>
@@ -344,20 +345,20 @@
         <circle cx="164" cy="51" r="2.2" fill="#FFFDF7" stroke="#DEC593" stroke-width="0.5"/>
 
         <!-- Windshield Arch Floral Garland -->
-        <circle cx="95" cy="30" r="2.0" fill="#E8899E"/>
+        <circle cx="95" cy="30" r="2.0" fill="#99BFE3"/>
         <circle cx="102" cy="25" r="2.2" fill="#FFFDF7"/>
         <circle cx="108" cy="27" r="2.0" fill="#C7AA72"/>
 
         <!-- Side Door Floral Garlands (Wedding roses & greenery swag) -->
-        <circle cx="68" cy="52" r="2.6" fill="#B2283E"/>
-        <circle cx="76" cy="51" r="2.2" fill="#E8899E"/>
+        <circle cx="68" cy="52" r="2.6" fill="#F2F6FA"/>
+        <circle cx="76" cy="51" r="2.2" fill="#99BFE3"/>
         <circle cx="84" cy="51" r="2.4" fill="#FFFDF7"/>
         <circle cx="92" cy="50" r="2.2" fill="#C7AA72"/>
         <path d="M 64 53 Q 80 48 96 52" fill="none" stroke="#4C8057" stroke-width="1.2"/>
 
         <!-- Rear Floral Cluster on Folded Top Boot -->
-        <circle cx="44" cy="36" r="3.2" fill="#B2283E"/>
-        <circle cx="51" cy="37" r="2.8" fill="#E8899E"/>
+        <circle cx="44" cy="36" r="3.2" fill="#F2F6FA"/>
+        <circle cx="51" cy="37" r="2.8" fill="#99BFE3"/>
         <circle cx="48" cy="34" r="2.0" fill="#FFFDF7"/>
         <path d="M 40 37 Q 48 32 56 37" fill="none" stroke="#3B6E47" stroke-width="1.8"/>
 
@@ -372,11 +373,11 @@
           <circle class="fairy-light fairy-phase-1" cx="34" cy="49" r="2.5" fill="#FFE066"/>
           <circle class="fairy-light fairy-phase-2" cx="48" cy="48" r="2.3" fill="#FFFFFF"/>
           <circle class="fairy-light fairy-phase-3" cx="62" cy="47" r="2.6" fill="#FFB300"/>
-          <circle class="fairy-light fairy-phase-4" cx="76" cy="46" r="2.4" fill="#FF80AB"/>
+          <circle class="fairy-light fairy-phase-4" cx="76" cy="46" r="2.4" fill="#FFE8B8"/>
           <circle class="fairy-light fairy-phase-1" cx="90" cy="45" r="2.5" fill="#FFE066"/>
           <circle class="fairy-light fairy-phase-2" cx="104" cy="44" r="2.4" fill="#FFFFFF"/>
           <circle class="fairy-light fairy-phase-3" cx="118" cy="44" r="2.6" fill="#FFB300"/>
-          <circle class="fairy-light fairy-phase-4" cx="132" cy="45" r="2.5" fill="#FF80AB"/>
+          <circle class="fairy-light fairy-phase-4" cx="132" cy="45" r="2.5" fill="#FFE8B8"/>
           <circle class="fairy-light fairy-phase-1" cx="146" cy="47" r="2.6" fill="#FFE066"/>
           <circle class="fairy-light fairy-phase-2" cx="158" cy="51" r="2.5" fill="#FFFFFF"/>
           <circle class="fairy-light fairy-phase-3" cx="166" cy="53" r="2.6" fill="#FFB300"/>
@@ -385,10 +386,10 @@
           <circle class="fairy-light fairy-phase-3" cx="68" cy="69" r="2.2" fill="#FFB300"/>
           <circle class="fairy-light fairy-phase-1" cx="78" cy="68" r="2.4" fill="#FFE066"/>
           <circle class="fairy-light fairy-phase-2" cx="88" cy="68" r="2.3" fill="#FFFFFF"/>
-          <circle class="fairy-light fairy-phase-4" cx="98" cy="69" r="2.2" fill="#FF80AB"/>
+          <circle class="fairy-light fairy-phase-4" cx="98" cy="69" r="2.2" fill="#FFE8B8"/>
 
           <!-- Windshield Arch Festive LEDs -->
-          <circle class="fairy-light fairy-phase-4" cx="91" cy="44" r="2.2" fill="#FF80AB"/>
+          <circle class="fairy-light fairy-phase-4" cx="91" cy="44" r="2.2" fill="#FFE8B8"/>
           <circle class="fairy-light fairy-phase-1" cx="96" cy="36" r="2.4" fill="#FFE066"/>
           <circle class="fairy-light fairy-phase-2" cx="102" cy="28" r="2.5" fill="#FFFFFF"/>
           <circle class="fairy-light fairy-phase-3" cx="106" cy="26" r="2.4" fill="#FFB300"/>
@@ -396,13 +397,13 @@
           <!-- Front Fender & Bumper LEDs -->
           <circle class="fairy-light fairy-phase-1" cx="142" cy="56" r="2.2" fill="#FFE066"/>
           <circle class="fairy-light fairy-phase-2" cx="156" cy="62" r="2.3" fill="#FFFFFF"/>
-          <circle class="fairy-light fairy-phase-4" cx="166" cy="67" r="2.2" fill="#FF80AB"/>
+          <circle class="fairy-light fairy-phase-4" cx="166" cy="67" r="2.2" fill="#FFE8B8"/>
 
           <!-- Rear Fender & Boot LEDs -->
           <circle class="fairy-light fairy-phase-3" cx="24" cy="57" r="2.2" fill="#FFB300"/>
           <circle class="fairy-light fairy-phase-1" cx="30" cy="53" r="2.3" fill="#FFE066"/>
           <circle class="fairy-light fairy-phase-2" cx="44" cy="38" r="2.2" fill="#FFFFFF"/>
-          <circle class="fairy-light fairy-phase-4" cx="54" cy="39" r="2.2" fill="#FF80AB"/>
+          <circle class="fairy-light fairy-phase-4" cx="54" cy="39" r="2.2" fill="#FFE8B8"/>
         </g>
 
         <!-- Curved Wheel Arches -->
@@ -583,14 +584,15 @@
     // Update car position, wheels, suspension, and stardust
     positionCar(eased);
 
-    // Reveal greeting at 38%
-    if (progress >= 0.38 && greeting && !greeting.classList.contains('visible')) {
-      greeting.classList.add('visible');
+    // Reveal 3 sequential journey cards
+    if (progress >= 0.20 && card1 && !card1.classList.contains('revealed')) {
+      card1.classList.add('revealed');
     }
-
-    // Reveal date at 80%
-    if (progress >= 0.80 && dateReveal && !dateReveal.classList.contains('visible')) {
-      dateReveal.classList.add('visible');
+    if (progress >= 0.58 && card2 && !card2.classList.contains('revealed')) {
+      card2.classList.add('revealed');
+    }
+    if (progress >= 0.88 && card3 && !card3.classList.contains('revealed')) {
+      card3.classList.add('revealed');
     }
 
     if (progress < 1) {
@@ -627,8 +629,9 @@
       progress = 1;
       drawnTrail.style.strokeDashoffset = 0;
       positionCar(1);
-      if (greeting) greeting.classList.add('visible');
-      if (dateReveal) dateReveal.classList.add('visible');
+      if (card1) card1.classList.add('revealed');
+      if (card2) card2.classList.add('revealed');
+      if (card3) card3.classList.add('revealed');
       placeDestinationHeart();
       carWrapper.classList.remove('is-travelling');
       carWrapper.classList.add('has-arrived');
@@ -650,8 +653,9 @@
     prevLen      = 0;
     drawnTrail.style.strokeDashoffset = totalLength;
     heartGroup.setAttribute('opacity', '0');
-    if (greeting) greeting.classList.remove('visible');
-    if (dateReveal) dateReveal.classList.remove('visible');
+    if (card1) card1.classList.remove('revealed');
+    if (card2) card2.classList.remove('revealed');
+    if (card3) card3.classList.remove('revealed');
     carWrapper.classList.remove('is-travelling');
     carWrapper.classList.remove('has-arrived');
     if (headlightBeam) headlightBeam.style.opacity = '0';

@@ -24,7 +24,7 @@ const WEDDING = Object.freeze({
   time:  null,     // Time column removed per user request
   venue: {
     name:   'Shehanshah Palace',
-    mapUrl: 'https://maps.app.goo.gl/DZTHWSUSbHaPdhuF6',
+    mapUrl: 'https://maps.app.goo.gl/sGMF5VTTgQhBbkMn8',
   },
   ceremonies: [],
 
@@ -39,20 +39,33 @@ const WEDDING = Object.freeze({
     autoplay: false,
   },
 
+  // ── Parents & Family details ───────────────────────────────────────────
+  parents: {
+    bride: 'D/O Manisha and Ajay Jain',
+    groom: 'S/O Pooja and Pramodh Kumar Jain',
+  },
+
   // ── Site copy ──────────────────────────────────────────────────────────
   wording: {
     heroEyebrow:     'A Wedding Celebration',
     heroTagline:     'Saturday · 5 December 2026',
-    familyHeading:   'Our dearest people. Our happiest beginning.',
-    familyBodyLead:  'To our beloved family, relatives and friends—this celebration would not be complete without you.',
-    familyBodyMain:  'As Srishti Jain and Himanshu Jain begin a new chapter, we invite you to bring your blessings, your laughter and your warmest hugs.',
-    familyBodySub:   'Come celebrate, make memories, and fill our wedding day with the love of the people who mean the most to us.',
-    familyClosing:   'Your presence is the most beautiful part of our celebration.',
-    journeyGreeting: 'A new journey begins — save the date',
-    journeyDate:     'Saturday · 5 December 2026',
-    countdownLabel:  'The Big Day Is Near',
-    venueHeading:    'Celebration Details',
-    keepsakeHeading: 'Wedding Invitation Keepsake',
+    familyHeading:   'Our happiest day, made complete by you.',
+    familyMessage:   'To the family who raised us, the relatives who have cheered us on, and the friends who became family—this celebration belongs to you too. As we begin our forever, we would love to have you beside us, filling the day with laughter, warm hugs, and your blessings.',
+    familyClosing:   'With love, Srishti Jain & Himanshu Jain',
+    journeyReveals: [
+      'With our favourite people…',
+      'Towards our forever',
+      '05 December 2026',
+    ],
+    calendarHeading: 'December 2026',
+    calendarSub:     'A Date Chosen by the Heart',
+    calendarFinish:  'One date. Two hearts. Everyone we love.',
+    countdownHeading:'A little closer to forever.',
+    countdownSub:    'Counting the days until we celebrate together.',
+    venueHeading:    'Shehanshah Palace',
+    venueDate:       'Saturday, 5 December 2026',
+    keepsakeHeading: 'A little piece of our celebration.',
+    keepsakeSub:     'Keep our invitation close. We can’t wait to celebrate with you.',
     finaleQuote:     'Your blessings, our beginning. Your presence, our joy.',
   },
 
