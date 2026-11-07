@@ -1,13 +1,14 @@
 // js/config.js
 // ─────────────────────────────────────────────────────────────────────────
-//  WEDDING CONFIGURATION — update all confirmed details here.
-//  Null values are displayed as "Details Pending" on the site.
+//  WEDDING CONFIGURATION — confirmed details for Srishti Jain & Himanshu Jain.
+//  Date: Saturday, 5 December 2026.
 // ─────────────────────────────────────────────────────────────────────────
 const WEDDING = Object.freeze({
   bride:      'Srishti Jain',
   groom:      'Himanshu Jain',
-  brideName:  'Srishti',
-  groomName:  'Himanshu',
+  brideName:  'Srishti Jain',
+  groomName:  'Himanshu Jain',
+  coupleFull: 'Srishti Jain & Himanshu Jain',
   initials:   'S & H',
 
   date: {
@@ -19,31 +20,40 @@ const WEDDING = Object.freeze({
     timezone: 'Asia/Kolkata',
   },
 
-  // ── Set once confirmed ─────────────────────────────────────────────────
-  time:  null,     // e.g. '6:30 PM IST'
+  // ── Confirmed details & placeholders ────────────────────────────────────
+  time:  null,     // Time column removed per user request
   venue: {
-    name:   null,  // e.g. 'City Palace, Jaipur' — update when confirmed
-    mapUrl: 'https://maps.app.goo.gl/sGMF5VTTgQhBbkMn8',
+    name:   'Shehanshah Palace',
+    mapUrl: 'https://maps.app.goo.gl/DZTHWSUSbHaPdhuF6',
   },
-  ceremonies: [],  // Add { name, time, details } objects when confirmed
+  ceremonies: [],
 
-  // ── Calendar / download ────────────────────────────────────────────────
-  icsFilename: 'Srishti-Himanshu-Wedding-2026.ics',
+  // ── Calendar / download filenames ───────────────────────────────────────
+  icsFilename: 'Srishti-Jain-Himanshu-Jain-Wedding-2026.ics',
+  pdfDetailsFilename: 'Srishti-Jain-Himanshu-Jain-Wedding-Details.pdf',
+  cardPngFilename: 'Srishti-Jain-Himanshu-Jain-Wedding-Invitation.png',
 
-  // ── Optional background music ──────────────────────────────────────────
-  // Drop an .mp3 file in assets/audio/ and set src below.
+  // ── Background Wedding Music ──────────────────────────────────────────
   music: {
-    src:      null,   // e.g. 'assets/audio/shehnai.mp3'
+    src:      'assets/audio/peaceful_wedding_melody.mp3', // Peaceful continuous romantic felt piano & acoustic guitar wedding melody
     autoplay: false,
   },
 
   // ── Site copy ──────────────────────────────────────────────────────────
   wording: {
-    opening:  'With the blessings of our families,',
-    main:     'we joyfully invite you to celebrate the wedding of',
-    closing:  'Your presence, love and blessings will make our day truly complete.',
-    pending:  'Venue, timings and further ceremony details will be shared soon.',
-    journey:  'A new journey begins — save the date',
+    heroEyebrow:     'A Wedding Celebration',
+    heroTagline:     'Saturday · 5 December 2026',
+    familyHeading:   'Our dearest people. Our happiest beginning.',
+    familyBodyLead:  'To our beloved family, relatives and friends—this celebration would not be complete without you.',
+    familyBodyMain:  'As Srishti Jain and Himanshu Jain begin a new chapter, we invite you to bring your blessings, your laughter and your warmest hugs.',
+    familyBodySub:   'Come celebrate, make memories, and fill our wedding day with the love of the people who mean the most to us.',
+    familyClosing:   'Your presence is the most beautiful part of our celebration.',
+    journeyGreeting: 'A new journey begins — save the date',
+    journeyDate:     'Saturday · 5 December 2026',
+    countdownLabel:  'The Big Day Is Near',
+    venueHeading:    'Celebration Details',
+    keepsakeHeading: 'Wedding Invitation Keepsake',
+    finaleQuote:     'Your blessings, our beginning. Your presence, our joy.',
   },
 
   // ── Card preview ───────────────────────────────────────────────────────
@@ -51,7 +61,7 @@ const WEDDING = Object.freeze({
     line1:  'Together with their families',
     line2:  'Srishti Jain',
     line3:  '& Himanshu Jain',
-    line4:  'Request the honour of your presence',
+    line4:  'Request the honour of your presence at the wedding celebration',
     line5:  'Saturday, 5 December 2026',
     line6:  'Rajasthan, India',
   },

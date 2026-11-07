@@ -1,13 +1,10 @@
 // js/music.js
 // ─────────────────────────────────────────────────────────────────────────
-//  Background music controller with:
-//  - Persistent volume slider + mute/play toggle
-//  - Gentle fade-in after envelope is opened
-//  - No restart between sections (continuous loop)
-//  - Respects browser autoplay restrictions
-//  - Respects prefers-reduced-motion (doesn't affect audio, only UI)
-//  - Generates a soft, pleasant ambient tone via Web Audio API as fallback
-//    when no music file is configured (using a gentle synthesized melody)
+//  Calm Background Instrumental Music Controller
+//  - Begins ONLY after opening interaction (opening or skipping envelope).
+//  - Persistent mute/volume controls (floating pill).
+//  - No restart during scrolling (continuous loop).
+//  - Web Audio API soft harmonic ambient tone if no audio file configured.
 // ─────────────────────────────────────────────────────────────────────────
 
 (function () {
@@ -15,16 +12,23 @@
 
   if (typeof WEDDING === 'undefined') return;
 
-  const controls  = document.getElementById('music-controls');
-  const toggleBtn = document.getElementById('music-toggle');
+  const controls     = document.getElementById('music-controls');
+  const toggleBtn    = document.getElementById('music-toggle');
   const volumeSlider = document.getElementById('music-volume');
-  const audioEl   = document.getElementById('site-audio');
+  const audioEl      = document.getElementById('site-audio');
 
   if (!controls || !toggleBtn || !audioEl) return;
 
   const hasSrc = WEDDING.music && WEDDING.music.src;
 
-  // ── If no music file configured, generate ambient tone via WebAudio ───
+  // Preload audio track if configured
+  if (hasSrc && audioEl) {
+    audioEl.preload = 'auto';
+    audioEl.loop = true;
+    audioEl.src = WEDDING.music.src;
+  }
+
+  // Web Audio Harmonic Ambient Generator Fallback
   let audioCtx    = null;
   let masterGain  = null;
   let oscillators = [];
@@ -37,12 +41,19 @@
       masterGain.gain.setValueAtTime(0, audioCtx.currentTime);
       masterGain.connect(audioCtx.destination);
 
-      // Soft harmonious ambient tones (S & H wedding)
+      // Low-pass filter for soft, warm acoustic presence
+      const filter = audioCtx.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(800, audioCtx.currentTime);
+      filter.connect(masterGain);
+
+      // Soft D Major warm romantic harmonic frequencies (heartfelt, peaceful, comforting)
       const tones = [
-        { freq: 261.63, vol: 0.08, type: 'sine' },   // C4
-        { freq: 329.63, vol: 0.06, type: 'sine' },   // E4
-        { freq: 392.00, vol: 0.05, type: 'sine' },   // G4
-        { freq: 523.25, vol: 0.04, type: 'sine' },   // C5 octave
+        { freq: 146.83, vol: 0.04, type: 'sine' },     // D3 - Grounding warm bass
+        { freq: 220.00, vol: 0.035, type: 'sine' },    // A3 - Harmonious fifth
+        { freq: 293.66, vol: 0.03, type: 'triangle' }, // D4 - Sweet acoustic warmth
+        { freq: 369.99, vol: 0.025, type: 'sine' },    // F#4 - Uplifting, heartfelt major third
+        { freq: 440.00, vol: 0.02, type: 'sine' },     // A4 - Soft sparkling glow
       ];
 
       tones.forEach(t => {
@@ -52,17 +63,17 @@
         osc.frequency.setValueAtTime(t.freq, audioCtx.currentTime);
         gain.gain.setValueAtTime(t.vol, audioCtx.currentTime);
 
-        // Gentle vibrato
-        const lfo  = audioCtx.createOscillator();
+        // Gentle undulating vibrato
+        const lfo   = audioCtx.createOscillator();
         const lGain = audioCtx.createGain();
-        lfo.frequency.setValueAtTime(0.4, audioCtx.currentTime);
-        lGain.gain.setValueAtTime(1.5, audioCtx.currentTime);
+        lfo.frequency.setValueAtTime(0.2, audioCtx.currentTime);
+        lGain.gain.setValueAtTime(1.1, audioCtx.currentTime);
         lfo.connect(lGain);
         lGain.connect(osc.frequency);
         lfo.start();
 
         osc.connect(gain);
-        gain.connect(masterGain);
+        gain.connect(filter);
         osc.start();
         oscillators.push(osc);
       });
@@ -74,172 +85,111 @@
     }
   }
 
-  // ── State ─────────────────────────────────────────────────────────────
-  let playing      = false;
-  let targetVolume = 0.30;
+  let isPlaying    = false;
+  let targetVolume = 0.28;
   let fadeRafId    = null;
 
-  // ── Volume from slider ─────────────────────────────────────────────────
-  function getSliderVol() {
+  function getSliderVolume() {
     return (parseInt(volumeSlider.value, 10) || 30) / 100;
   }
 
-  // ── Fade helpers ──────────────────────────────────────────────────────
-  function cancelFade() {
-    if (fadeRafId) { cancelAnimationFrame(fadeRafId); fadeRafId = null; }
-  }
-
-  function fadeTo(targetVol, durationMs, onDone) {
-    cancelFade();
-    const startVol  = usingWebAudio
-      ? masterGain.gain.value
-      : audioEl.volume;
+  function fadeTo(targetVol, durationMs) {
+    if (fadeRafId) cancelAnimationFrame(fadeRafId);
+    const startVol  = usingWebAudio ? (masterGain ? masterGain.gain.value : 0) : audioEl.volume;
     const startTime = performance.now();
 
     function step(now) {
-      const t = Math.min((now - startTime) / durationMs, 1);
-      const easedT = t < 0.5 ? 2*t*t : -1+(4-2*t)*t;
-      const vol = startVol + (targetVol - startVol) * easedT;
-
-      if (usingWebAudio) {
-        masterGain.gain.setValueAtTime(vol, audioCtx.currentTime);
-      } else {
-        audioEl.volume = Math.max(0, Math.min(1, vol));
+      const elapsed = Math.min((now - startTime) / durationMs, 1);
+      const current = startVol + (targetVol - startVol) * elapsed;
+      if (usingWebAudio && masterGain && audioCtx) {
+        masterGain.gain.setValueAtTime(current, audioCtx.currentTime);
+      } else if (!usingWebAudio) {
+        audioEl.volume = Math.max(0, Math.min(1, current));
       }
-
-      updateVolumeSliderFill(vol);
-
-      if (t < 1) {
+      if (elapsed < 1) {
         fadeRafId = requestAnimationFrame(step);
       } else {
         fadeRafId = null;
-        if (onDone) onDone();
       }
     }
     fadeRafId = requestAnimationFrame(step);
   }
 
-  function updateVolumeSliderFill(vol) {
-    if (!volumeSlider) return;
-    const pct = Math.round(vol * 100);
-    volumeSlider.style.background =
-      `linear-gradient(90deg, #B8975A ${pct}%, rgba(184,151,90,0.25) ${pct}%)`;
-  }
-
-  // ── Play / pause ──────────────────────────────────────────────────────
-  function setIcon() {
-    toggleBtn.textContent = playing ? '⏸' : '♪';
-    toggleBtn.setAttribute('aria-label', playing ? 'Pause music' : 'Play background music');
-  }
-
-  function startMusic() {
-    targetVolume = getSliderVol();
-
-    if (usingWebAudio) {
-      if (audioCtx.state === 'suspended') audioCtx.resume();
-      fadeTo(targetVolume, 1200);
-      playing = true;
-      setIcon();
-      return;
-    }
+  function playMusic() {
+    if (isPlaying) return;
 
     if (hasSrc) {
-      audioEl.volume = 0;
+      if (!audioEl.src || !audioEl.src.includes('peaceful_wedding_melody')) {
+        audioEl.src = WEDDING.music.src;
+      }
+      audioEl.loop = true;
       audioEl.play().then(() => {
-        playing = true;
-        fadeTo(targetVolume, 1200);
-        setIcon();
-      }).catch(() => {
-        // Autoplay blocked — user must interact first
-        playing = false;
-        setIcon();
+        isPlaying = true;
+        updateUI();
+        fadeTo(getSliderVolume(), 2200);
+      }).catch((err) => {
+        console.warn('Audio playback error, falling back to Web Audio:', err);
+        // Fallback to Web Audio if audio element fails
+        if (initWebAudio()) {
+          isPlaying = true;
+          updateUI();
+          fadeTo(getSliderVolume(), 2200);
+        }
       });
     } else {
-      // No src and WebAudio not initialised — try now
-      if (initWebAudio()) {
-        if (audioCtx.state === 'suspended') audioCtx.resume();
-        fadeTo(targetVolume, 1200);
-        playing = true;
-        setIcon();
+      if (!audioCtx) initWebAudio();
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
       }
+      isPlaying = true;
+      updateUI();
+      fadeTo(getSliderVolume(), 2200);
     }
   }
 
-  function stopMusic(fadeMs = 700) {
-    playing = false;
-    setIcon();
-    fadeTo(0, fadeMs, () => {
-      if (usingWebAudio) {
-        if (audioCtx) audioCtx.suspend();
-      } else {
-        audioEl.pause();
-      }
-    });
+  function pauseMusic() {
+    if (!isPlaying) return;
+    fadeTo(0, 600);
+    setTimeout(() => {
+      if (hasSrc) audioEl.pause();
+      if (audioCtx && audioCtx.state === 'running') audioCtx.suspend();
+      isPlaying = false;
+      updateUI();
+    }, 650);
   }
 
   function toggleMusic() {
-    if (playing) {
-      stopMusic();
-    } else {
-      // Init WebAudio lazily (needs user gesture)
-      if (!hasSrc && !usingWebAudio) {
-        initWebAudio();
-      }
-      startMusic();
-    }
+    if (isPlaying) pauseMusic();
+    else playMusic();
   }
 
-  // ── Volume slider interaction ─────────────────────────────────────────
+  function updateUI() {
+    toggleBtn.textContent = isPlaying ? '❚❚' : '♪';
+    toggleBtn.setAttribute('aria-label', isPlaying ? 'Pause background music' : 'Play background music');
+    controls.classList.remove('hidden');
+  }
+
+  // Volume slider event
   volumeSlider.addEventListener('input', () => {
-    targetVolume = getSliderVol();
-    if (usingWebAudio && masterGain) {
-      masterGain.gain.setValueAtTime(playing ? targetVolume : 0, audioCtx.currentTime);
-    } else {
-      if (playing) audioEl.volume = targetVolume;
+    const vol = getSliderVolume();
+    if (usingWebAudio && masterGain && audioCtx) {
+      masterGain.gain.setValueAtTime(vol, audioCtx.currentTime);
+    } else if (!usingWebAudio) {
+      audioEl.volume = vol;
     }
-    updateVolumeSliderFill(targetVolume);
+    if (vol === 0 && isPlaying) {
+      pauseMusic();
+    } else if (vol > 0 && !isPlaying) {
+      playMusic();
+    }
   });
 
-  // ── Envelope opened event — gentle fade in ────────────────────────────
+  toggleBtn.addEventListener('click', toggleMusic);
+
+  // Trigger music only after opening interaction
   document.addEventListener('envelopeOpened', () => {
     controls.classList.remove('hidden');
-
-    if (hasSrc) {
-      audioEl.src    = WEDDING.music.src;
-      audioEl.loop   = true;
-      audioEl.volume = 0;
-      audioEl.load();
-    }
-
-    // Gently attempt autoplay after envelope opens (user interacted with envelope)
-    setTimeout(() => {
-      if (!playing) {
-        if (hasSrc) {
-          audioEl.play().then(() => {
-            playing = true;
-            fadeTo(getSliderVol(), 2000);
-            setIcon();
-          }).catch(() => {
-            // Autoplay restricted — controls are visible for user to start manually
-          });
-        } else if (!usingWebAudio) {
-          // WebAudio needs explicit user gesture; leave controls ready
-        }
-      }
-    }, 1200);
+    playMusic();
   }, { once: true });
-
-  // ── Bind events ───────────────────────────────────────────────────────
-  toggleBtn.addEventListener('click', toggleMusic);
-  toggleBtn.addEventListener('keydown', e => {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleMusic(); }
-  });
-
-  // ── Init UI ───────────────────────────────────────────────────────────
-  updateVolumeSliderFill(targetVolume);
-  setIcon();
-
-  // Show controls — will be revealed after envelope opens
-  // (hidden initially via CSS)
 
 })();
