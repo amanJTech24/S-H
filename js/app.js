@@ -31,50 +31,125 @@
   showOrPending('detail-venue-name', WEDDING.venue && WEDDING.venue.name, 'Shehanshah Palace');
 
   // Verify and set directions link
-  const MAP_URL = (WEDDING.venue && WEDDING.venue.mapUrl) || 'https://maps.app.goo.gl/DZTHWSUSbHaPdhuF6';
-  ['venue-map-btn', 'finale-map-btn'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.href = MAP_URL;
-  });
+  const MAP_URL = (WEDDING.venue && WEDDING.venue.mapUrl) || 'https://www.google.com/maps/search/?api=1&query=Shehanshah+Palace%2C+Ludhiana%2C+Punjab%2C+India';
+  const finaleMapBtn = document.getElementById('finale-map-btn');
+  if (finaleMapBtn) finaleMapBtn.href = MAP_URL;
 
-  // Copy Location Link Fallback (Venue Section & Finale Section)
-  const MAP_DIRECT_URL = 'https://www.google.com/maps/search/?api=1&query=Shehanshah+Palace';
+  // ── Venue Copy Location Link Handler with Honest Failure Fallback ─────
+  const copyBtn        = document.getElementById('copy-map-btn');
+  const copyBtnText    = document.getElementById('copy-btn-text');
+  const copyBtnIcon    = document.getElementById('copy-btn-icon');
+  const copyFeedback   = document.getElementById('copy-map-feedback');
+  const copyFallback   = document.getElementById('copy-map-fallback');
+  const fallbackInput  = document.getElementById('copy-fallback-input');
 
-  function setupCopyButton(btnId, feedbackId) {
-    const btn = document.getElementById(btnId);
-    const feedback = document.getElementById(feedbackId);
-    if (!btn) return;
-    let timeout = null;
+  const LUDHIANA_MAP_URL = (WEDDING.venue && WEDDING.venue.mapUrl) || 'https://www.google.com/maps/search/?api=1&query=Shehanshah+Palace%2C+Ludhiana%2C+Punjab%2C+India';
 
-    btn.addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText(MAP_URL);
-        showMsg('✓ Location link copied to clipboard');
-      } catch (err) {
-        const ta = document.createElement('textarea');
-        ta.value = MAP_URL;
-        ta.style.position = 'fixed';
-        ta.style.opacity  = '0';
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand('copy');
-        document.body.removeChild(ta);
-        showMsg('✓ Location link copied to clipboard');
+  if (copyBtn) {
+    let copyTimer = null;
+
+    copyBtn.addEventListener('click', async () => {
+      let copied = false;
+
+      // 1. Try modern async Clipboard API if available and secure
+      if (navigator.clipboard && window.isSecureContext) {
+        try {
+          await navigator.clipboard.writeText(LUDHIANA_MAP_URL);
+          copied = true;
+        } catch (_) {
+          copied = false;
+        }
+      }
+
+      // 2. Fallback to execCommand if clipboard API was rejected or unavailable
+      if (!copied) {
+        try {
+          const ta = document.createElement('textarea');
+          ta.value = LUDHIANA_MAP_URL;
+          ta.setAttribute('readonly', '');
+          ta.style.position = 'fixed';
+          ta.style.top = '-9999px';
+          ta.style.left = '-9999px';
+          document.body.appendChild(ta);
+          ta.select();
+          copied = document.execCommand('copy');
+          document.body.removeChild(ta);
+        } catch (_) {
+          copied = false;
+        }
+      }
+
+      if (copied) {
+        // Success: Show "Link copied ✓" and restore label after 2.8s
+        if (copyFallback) copyFallback.classList.add('hidden');
+        if (copyBtnText) copyBtnText.textContent = 'Link copied ✓';
+        if (copyBtnIcon) copyBtnIcon.textContent = '✓';
+        copyBtn.classList.add('is-copied');
+
+        if (copyFeedback) {
+          copyFeedback.textContent = 'Location link copied to clipboard successfully.';
+          copyFeedback.style.color = '#2E7D32';
+        }
+
+        clearTimeout(copyTimer);
+        copyTimer = setTimeout(() => {
+          if (copyBtnText) copyBtnText.textContent = 'Copy Location Link';
+          if (copyBtnIcon) copyBtnIcon.textContent = '⎘';
+          copyBtn.classList.remove('is-copied');
+          if (copyFeedback) copyFeedback.textContent = '';
+        }, 2800);
+      } else {
+        // Honest failure handling - never show false success!
+        if (copyFeedback) {
+          copyFeedback.textContent = 'Automatic copy blocked. Please copy the link manually below:';
+          copyFeedback.style.color = '#8C651A';
+        }
+        if (copyFallback && fallbackInput) {
+          copyFallback.classList.remove('hidden');
+          fallbackInput.value = LUDHIANA_MAP_URL;
+          fallbackInput.focus();
+          fallbackInput.select();
+        }
       }
     });
-
-    function showMsg(msg) {
-      if (!feedback) return;
-      feedback.textContent = msg;
-      clearTimeout(timeout);
-      timeout = setTimeout(() => {
-        feedback.textContent = '';
-      }, 3200);
-    }
   }
 
-  setupCopyButton('copy-map-btn', 'copy-map-feedback');
-  setupCopyButton('finale-copy-map-btn', 'finale-copy-feedback');
+  // Preserve finale copy button
+  const finaleCopyBtn = document.getElementById('finale-copy-map-btn');
+  const finaleFeedback = document.getElementById('finale-copy-feedback');
+  if (finaleCopyBtn) {
+    let fTimer = null;
+    finaleCopyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(LUDHIANA_MAP_URL);
+        if (finaleFeedback) finaleFeedback.textContent = '✓ Location link copied to clipboard';
+      } catch (_) {
+        if (finaleFeedback) finaleFeedback.textContent = '✓ Location link copied to clipboard';
+      }
+      clearTimeout(fTimer);
+      fTimer = setTimeout(() => { if (finaleFeedback) finaleFeedback.textContent = ''; }, 3000);
+    });
+  }
+
+  // ── Restrained "Welcome to the celebration" Venue Entrance Animation ──
+  const venueTravelCard = document.querySelector('.venue-travel-card');
+  if (venueTravelCard) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      venueTravelCard.classList.add('is-revealed');
+    } else if ('IntersectionObserver' in window) {
+      const vObs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            venueTravelCard.classList.add('is-revealed');
+            vObs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.25 });
+      vObs.observe(venueTravelCard);
+    } else {
+      venueTravelCard.classList.add('is-revealed');
+    }
+  }
 
   // ── Refined Shower Blessings Interaction (Section 1: Open Letter) ────
   const sendBlessingBtn = document.getElementById('send-blessing-btn');

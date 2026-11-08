@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="css/main.css?v=3.0">
+  <link rel="stylesheet" href="css/main.css?v=3.1">
 
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>💍</text></svg>">
@@ -448,25 +448,64 @@
           <p class="section-subtext">We look forward to welcoming you</p>
         </header>
 
-        <!-- Travel Invitation Card -->
-        <article class="venue-travel-card" role="article" aria-label="Wedding Venue: Shehanshah Palace">
+        <!-- Travel Invitation Card with Double-Line Border & Corner Flourishes -->
+        <article class="venue-travel-card" role="article" aria-label="Wedding Venue: Shehanshah Palace, Ludhiana">
           
+          <!-- Delicate Floral Corner Flourishes (Hydrangea & White Rose) -->
+          <div class="venue-corner venue-corner-tl" aria-hidden="true"></div>
+          <div class="venue-corner venue-corner-tr" aria-hidden="true"></div>
+          <div class="venue-corner venue-corner-bl" aria-hidden="true"></div>
+          <div class="venue-corner venue-corner-br" aria-hidden="true"></div>
+
           <div class="venue-card-grid">
             
-            <!-- Left Column: Architectural Palace Illustration -->
-            <div class="venue-visual-frame">
-              <div class="venue-arch-window">
-                <img src="assets/images/palace_arch_frame.png" alt="Shehanshah Palace Architectural Arch" class="venue-arch-img" width="380" height="360" loading="lazy">
+            <!-- Left Column: Authentic Venue Photograph Framed by Arch Outline -->
+            <div class="venue-visual-column">
+              <div class="venue-arch-wrapper">
+                <!-- Thin Blue-and-Champagne Arch Outline Drawing SVG -->
+                <svg class="venue-arch-svg" viewBox="0 0 320 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="venueArchGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#367FA3"/>
+                      <stop offset="50%" stop-color="#C5AD79"/>
+                      <stop offset="100%" stop-color="#367FA3"/>
+                    </linearGradient>
+                  </defs>
+                  <path class="venue-arch-path"
+                        d="M 12,215 L 12,75 C 12,32 55,8 160,8 C 265,8 308,32 308,75 L 308,215"
+                        stroke="url(#venueArchGrad)"
+                        stroke-width="1.8"
+                        stroke-linecap="round"/>
+                </svg>
+
+                <!-- Modest, Attractive Photo Card (Full Uncropped Entrance) -->
+                <div class="venue-photo-card">
+                  <img src="assets/images/shehanshah_palace_venue.png"
+                       alt="Grand illuminated entrance of Shehanshah Palace, Ludhiana, Punjab"
+                       class="venue-entrance-photo"
+                       width="299"
+                       height="168"
+                       loading="lazy">
+                  <!-- Delicate Light Sweep Overlay -->
+                  <div class="venue-light-sweep" aria-hidden="true"></div>
+                </div>
               </div>
-              <p class="venue-visual-caption">Artistic Illustration · Shehanshah Palace</p>
+
+              <!-- Unadorned, Clean Authentic Caption -->
+              <p class="venue-visual-caption">Shehanshah Palace · Ludhiana</p>
             </div>
 
-            <!-- Right Column: Confirmed Venue Details & Direct Directions -->
+            <!-- Right Column: Confirmed Venue Details & Verified Map Actions -->
             <div class="venue-info-column">
-              <div class="venue-badge">✦ Auspicious Destination ✦</div>
-              <h3 class="venue-title">Shehanshah Palace</h3>
-              <p class="venue-date-highlight">Saturday, 5 December 2026</p>
-              <p class="venue-location-state">Rajasthan, India</p>
+              
+              <div class="venue-header-group">
+                <div class="venue-badge">✦ Auspicious Destination ✦</div>
+                <h3 class="venue-title">Shehanshah Palace</h3>
+                <p class="venue-date-highlight">Saturday, 5 December 2026</p>
+                <p class="venue-location-state">
+                  <span class="location-pin" aria-hidden="true">📍</span> Ludhiana, Punjab, India
+                </p>
+              </div>
 
               <div class="venue-details-list">
                 <div class="venue-detail-item">
@@ -478,36 +517,54 @@
                 <div class="venue-detail-item">
                   <span class="detail-bullet">◈</span>
                   <div class="detail-text">
+                    <strong>Location:</strong> Ludhiana, Punjab, India
+                  </div>
+                </div>
+                <div class="venue-detail-item">
+                  <span class="detail-bullet">◈</span>
+                  <div class="detail-text">
                     <strong>Celebration:</strong> Auspicious wedding ceremonies
                   </div>
                 </div>
               </div>
 
-              <!-- Clear, Reliable Directions & Location Actions -->
+              <!-- Action Buttons: "Search Maps" (primary) and "Copy Location Link" (secondary) -->
               <div class="venue-button-row">
-                <a id="venue-map-btn"
-                   href="https://maps.app.goo.gl/sGMF5VTTgQhBbkMn8"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   referrerpolicy="no-referrer"
-                   class="btn-primary-blue"
-                   aria-label="Get directions to Shehanshah Palace on Google Maps (opens in new tab)">
-                  ◎ Get Directions
-                </a>
                 <a id="venue-map-direct-btn"
-                   href="https://www.google.com/maps/search/?api=1&query=Shehanshah+Palace"
+                   href="https://www.google.com/maps/search/?api=1&query=Shehanshah+Palace%2C+Ludhiana%2C+Punjab%2C+India"
                    target="_blank"
                    rel="noopener noreferrer"
-                   referrerpolicy="no-referrer"
-                   class="btn-secondary-blue"
-                   aria-label="Search Shehanshah Palace on Google Maps">
-                  ✦ Search on Maps
+                   class="btn-primary-blue venue-action-btn"
+                   aria-label="Search Shehanshah Palace in Ludhiana, Punjab, India on Google Maps (opens in new tab)">
+                  <span class="btn-icon" aria-hidden="true">📍</span> Search Maps
                 </a>
-                <button id="copy-map-btn" type="button" class="btn-quiet-outline" aria-label="Copy location link to clipboard">
-                  ⎘ Copy Location Link
+                <button id="copy-map-btn"
+                        type="button"
+                        class="btn-secondary-champagne venue-action-btn"
+                        aria-label="Copy location link for Shehanshah Palace, Ludhiana to clipboard"
+                        data-url="https://www.google.com/maps/search/?api=1&query=Shehanshah+Palace%2C+Ludhiana%2C+Punjab%2C+India">
+                  <span id="copy-btn-icon" class="btn-icon" aria-hidden="true">⎘</span>
+                  <span id="copy-btn-text">Copy Location Link</span>
                 </button>
               </div>
+
+              <!-- Accessible Live Feedback -->
               <p id="copy-map-feedback" class="copy-feedback" aria-live="polite"></p>
+
+              <!-- Honest Manual-Copy Fallback Card (Only shown if Clipboard API is blocked) -->
+              <div id="copy-map-fallback" class="copy-fallback-card hidden" aria-live="polite">
+                <label for="copy-fallback-input" class="fallback-label">
+                  Copying failed. Please copy the link below:
+                </label>
+                <div class="fallback-input-row">
+                  <input type="text"
+                         id="copy-fallback-input"
+                         class="fallback-input"
+                         readonly
+                         value="https://www.google.com/maps/search/?api=1&query=Shehanshah+Palace%2C+Ludhiana%2C+Punjab%2C+India"
+                         aria-label="Selectable venue map link for manual copying">
+                </div>
+              </div>
 
             </div>
 
@@ -673,17 +730,17 @@
   <!-- ════════════════════════════════════════════════════════════
        SCRIPTS (Config → Core Modules → Init)
        ════════════════════════════════════════════════════════════ -->
-  <script src="js/config.js?v=3.0"></script>
-  <script src="js/envelope.js?v=3.0"></script>
-  <script src="js/petals.js?v=3.0"></script>
-  <script src="js/car-path.js?v=3.0"></script>
-  <script src="js/calendar.js?v=3.0"></script>
-  <script src="js/countdown.js?v=3.0"></script>
-  <script src="js/card.js?v=3.0"></script>
-  <script src="js/finale.js?v=3.0"></script>
-  <script src="js/music.js?v=3.0"></script>
-  <script src="js/cursor.js?v=3.0"></script>
-  <script src="js/app.js?v=3.0"></script>
+  <script src="js/config.js?v=3.1"></script>
+  <script src="js/envelope.js?v=3.1"></script>
+  <script src="js/petals.js?v=3.1"></script>
+  <script src="js/car-path.js?v=3.1"></script>
+  <script src="js/calendar.js?v=3.1"></script>
+  <script src="js/countdown.js?v=3.1"></script>
+  <script src="js/card.js?v=3.1"></script>
+  <script src="js/finale.js?v=3.1"></script>
+  <script src="js/music.js?v=3.1"></script>
+  <script src="js/cursor.js?v=3.1"></script>
+  <script src="js/app.js?v=3.1"></script>
 
 </body>
 </html>

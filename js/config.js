@@ -24,7 +24,8 @@ const WEDDING = Object.freeze({
   time:  null,     // Time column removed per user request
   venue: {
     name:   'Shehanshah Palace',
-    mapUrl: 'https://maps.app.goo.gl/sGMF5VTTgQhBbkMn8',
+    city:   'Ludhiana, Punjab, India',
+    mapUrl: 'https://www.google.com/maps/search/?api=1&query=Shehanshah+Palace%2C+Ludhiana%2C+Punjab%2C+India',
   },
   ceremonies: [],
 
@@ -63,6 +64,7 @@ const WEDDING = Object.freeze({
     countdownHeading:'A little closer to forever.',
     countdownSub:    'Counting the days until we celebrate together.',
     venueHeading:    'Shehanshah Palace',
+    venueLocation:   'Ludhiana, Punjab, India',
     venueDate:       'Saturday, 5 December 2026',
     keepsakeHeading: 'A little piece of our celebration.',
     keepsakeSub:     'Keep our invitation close. We can’t wait to celebrate with you.',
