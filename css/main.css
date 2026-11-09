@@ -2215,7 +2215,7 @@ button {
 .card-tap-hint {
   position: absolute;
   bottom: 12px;
-  right: 12px;
+  left: 12px;
   background: rgba(25, 59, 85, 0.85);
   color: #FFFFFF;
   font-family: var(--ff-display);

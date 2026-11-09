@@ -43,7 +43,7 @@ const WEDDING = Object.freeze({
   // ── Parents & Family details ───────────────────────────────────────────
   parents: {
     bride: 'D/O Manisha and Ajay Jain',
-    groom: 'S/O Pooja and Pramodh Kumar Jain',
+    groom: 'S/O Pooja and Parmod Kumar Jain',
   },
 
   // ── Site copy ──────────────────────────────────────────────────────────
