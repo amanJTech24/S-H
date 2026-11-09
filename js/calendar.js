@@ -332,8 +332,8 @@
       'DTEND;VALUE=DATE:20261206',
       'SUMMARY:Srishti Jain & Himanshu Jain Wedding 💍',
       'DESCRIPTION:We joyfully invite you to celebrate the wedding of Srishti Jain & Himanshu Jain.\\nSaturday\\, 5 December 2026.',
-      'LOCATION:Shehanshah Palace\\, Rajasthan\\, India',
-      'URL:https://maps.app.goo.gl/sGMF5VTTgQhBbkMn8',
+      'LOCATION:Shehanshah Palace\\, Ludhiana\\, Punjab\\, India',
+      'URL:https://www.google.com/maps/search/?api=1&query=Shehanshah+Palace%2C+Ludhiana%2C+Punjab%2C+India',
       'TRANSP:TRANSPARENT',
       'STATUS:CONFIRMED',
       'BEGIN:VALARM',
@@ -371,7 +371,7 @@
       '&text=' + encodeURIComponent('Srishti Jain & Himanshu Jain Wedding 💍') +
       '&dates=20261205/20261206' +
       '&details=' + encodeURIComponent('We joyfully invite you to celebrate the wedding of Srishti Jain & Himanshu Jain. Saturday, 5 December 2026.') +
-      '&location=' + encodeURIComponent('Shehanshah Palace, Rajasthan, India');
+      '&location=' + encodeURIComponent('Shehanshah Palace, Ludhiana, Punjab, India');
     gcalBtn.href = gcalUrl;
   }
 
@@ -525,11 +525,11 @@ body {
     </tr>
     <tr>
       <td class="label">Location</td>
-      <td class="value">Rajasthan, India</td>
+      <td class="value">Ludhiana, Punjab, India</td>
     </tr>
     <tr>
       <td class="label">Directions</td>
-      <td class="value"><a href="https://maps.app.goo.gl/sGMF5VTTgQhBbkMn8" style="color:#367FA3; text-decoration:underline;">View on Google Maps</a></td>
+      <td class="value"><a href="https://www.google.com/maps/search/?api=1&query=Shehanshah+Palace%2C+Ludhiana%2C+Punjab%2C+India" style="color:#367FA3; text-decoration:underline;">View on Google Maps</a></td>
     </tr>
   </table>
 

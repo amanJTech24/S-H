@@ -78,6 +78,6 @@ const WEDDING = Object.freeze({
     line3:  '& Himanshu Jain',
     line4:  'Request the honour of your presence at the wedding celebration',
     line5:  'Saturday, 5 December 2026',
-    line6:  'Rajasthan, India',
+    line6:  'Ludhiana, Punjab, India',
   },
 });
