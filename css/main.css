@@ -997,14 +997,14 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.25rem 0;
+  padding: 1.5rem 0;
   background: var(--clr-pearl-white);
   pointer-events: none;
 }
 .section-floral-divider img {
   max-width: 260px;
   height: auto;
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 /* ── Standard Coordinated Button System ───────────────────────────────── */
@@ -1039,7 +1039,7 @@ button {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background: rgba(229, 240, 250, 0.75);
+  background: rgba(229, 240, 250, 0.85);
   color: var(--clr-navy-deep);
   font-family: var(--ff-display);
   font-size: 0.78rem;
@@ -1047,7 +1047,7 @@ button {
   text-transform: uppercase;
   padding: 0.85rem 1.6rem;
   border-radius: 999px;
-  border: 1px solid rgba(169, 201, 229, 0.8);
+  border: 1px solid rgba(169, 201, 229, 0.85);
   cursor: pointer;
   transition: all var(--dur-fast);
   text-decoration: none;
@@ -1108,14 +1108,67 @@ button {
   background: rgba(229, 240, 250, 0.4);
 }
 
+/* ── React Bits Selective Effects ─────────────────────────────────────── */
+/* 1. Glare Hover: Faint pearl-like highlight tracking cursor (Desktop only) */
+.glare-hover-layer {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    circle 260px at var(--glare-x, 50%) var(--glare-y, 50%),
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(255, 255, 255, 0.2) 35%,
+    transparent 70%
+  );
+  mix-blend-mode: soft-light;
+  transition: opacity 0.35s ease-out;
+  z-index: 8;
+}
+
+/* 2. Animated Content: Gentle entrance transition */
+.reveal-animated-content {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-animated-content.is-in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 3. Fade Content: Soft reveal for botanicals and artwork */
+.fade-content-reveal {
+  opacity: 0;
+  transform: scale(0.98);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.fade-content-reveal.is-in-view {
+  opacity: 1;
+  transform: scale(1);
+}
+
 /* ════════════════════════════════════════════════════════════════════════
    1. PERSONAL INVITATION — AN OPEN LETTER (#invitation)
    Ivory letter resting on pale-blue silk, with restrained floral corners,
    embossed S&H monogram, sacred Jain wording, and refined blessings shower.
    ════════════════════════════════════════════════════════════════════════ */
 .section-invitation {
-  background: radial-gradient(circle at 50% 25%, #F7FAFD 0%, #EBF3FA 60%, #E2EDF7 100%);
+  background: radial-gradient(circle at 50% 25%, #FAFCFF 0%, #EEF5FB 50%, #E2EDF7 100%);
   padding: clamp(3.5rem, 6vw, 6rem) 1.25rem;
+  position: relative;
+}
+
+.silk-backdrop {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 15% 25%, rgba(255, 255, 255, 0.85) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 75%, rgba(169, 201, 229, 0.28) 0%, transparent 60%),
+    linear-gradient(135deg, #F8FAFD 0%, #EBF3FA 50%, #E0EEF8 100%);
+  opacity: 0.95;
+  pointer-events: none;
 }
 
 .open-letter-paper {
@@ -1123,24 +1176,27 @@ button {
   max-width: 780px;
   margin: 0 auto;
   background: #FFFFFF;
-  border-radius: 6px;
+  border-radius: 8px;
   padding: clamp(2.5rem, 5vw, 4.2rem) clamp(1.5rem, 5vw, 3.8rem);
-  border: 1px solid rgba(169, 201, 229, 0.45);
+  border: 1px solid rgba(169, 201, 229, 0.55);
   box-shadow:
+    0 1px 3px rgba(25, 59, 85, 0.05),
     0 20px 50px -10px rgba(25, 59, 85, 0.12),
-    0 4px 15px rgba(25, 59, 85, 0.04),
-    inset 0 0 40px rgba(240, 246, 252, 0.6);
+    0 6px 18px rgba(25, 59, 85, 0.04),
+    inset 0 0 0 1px rgba(197, 173, 121, 0.35),
+    inset 0 0 50px rgba(246, 250, 254, 0.8);
   text-align: center;
 }
 
-/* Restrained Floral Corners */
+/* Tactile Floral Corners (Hydrangea & White Rose) */
 .letter-corner {
   position: absolute;
-  width: clamp(38px, 5vw, 52px);
-  height: clamp(38px, 5vw, 52px);
+  width: clamp(48px, 6vw, 68px);
+  height: clamp(48px, 6vw, 68px);
   background: url('../assets/images/hydrangea_corner.svg') no-repeat center / contain;
   pointer-events: none;
-  opacity: 0.75;
+  opacity: 0.92;
+  z-index: 2;
 }
 .letter-corner-tl { top: 12px; left: 12px; }
 .letter-corner-tr { top: 12px; right: 12px; transform: scaleX(-1); }
@@ -1165,7 +1221,7 @@ button {
   justify-content: center;
 }
 .letter-monogram {
-  filter: drop-shadow(0 2px 6px rgba(25, 59, 85, 0.1));
+  filter: drop-shadow(0 2px 8px rgba(197, 173, 121, 0.35)) drop-shadow(0 4px 14px rgba(25, 59, 85, 0.08));
 }
 
 .letter-eyebrow {
@@ -1188,9 +1244,9 @@ button {
 
 .letter-message {
   font-family: var(--ff-body);
-  font-size: clamp(1.1rem, 2vw, 1.24rem);
-  line-height: 1.9;
-  color: #244866;
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
+  line-height: 1.95;
+  color: #193B55;
   max-width: 650px;
   margin: 0 auto 2rem;
 }
@@ -1200,12 +1256,13 @@ button {
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
-  padding: 1.2rem 1rem;
+  padding: 1.2rem 1.4rem;
   margin: 1.5rem auto;
   max-width: 620px;
-  background: rgba(240, 246, 252, 0.65);
+  background: rgba(244, 249, 254, 0.75);
   border-radius: 8px;
-  border: 1px solid rgba(169, 201, 229, 0.4);
+  border: 1px solid rgba(169, 201, 229, 0.45);
+  box-shadow: inset 0 0 0 1px rgba(197, 173, 121, 0.25);
 }
 
 .family-column {
@@ -1231,21 +1288,23 @@ button {
 }
 
 .letter-closing {
-  margin-top: 1.8rem;
+  margin-top: 2rem;
 }
 .letter-signoff {
   font-family: var(--ff-serif);
   font-style: italic;
   font-size: 1.15rem;
   color: #55799C;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.35rem;
 }
 .letter-couple-signatures {
-  font-family: var(--ff-display);
-  font-size: clamp(1.2rem, 2.2vw, 1.45rem);
-  letter-spacing: 0.08em;
+  font-family: 'Great Vibes', 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.65rem, 3.2vw, 2.15rem);
+  letter-spacing: 0.03em;
   color: var(--clr-navy-deep);
-  font-weight: 600;
+  font-weight: 500;
+  line-height: 1.3;
 }
 
 .btn-blessing {
@@ -1297,21 +1356,24 @@ button {
   position: relative;
   width: 100%;
   max-width: 1040px;
-  height: clamp(260px, 32vw, 360px);
+  height: clamp(280px, 34vw, 380px);
   margin: 0 auto;
-  border-radius: 16px;
+  border-radius: 18px;
   overflow: hidden;
-  background: linear-gradient(180deg, #EAF2F9 0%, #F5F9FD 50%, #E3EEF8 100%);
-  border: 1px solid rgba(169, 201, 229, 0.6);
-  box-shadow: 0 16px 45px -10px rgba(25, 59, 85, 0.1);
+  background: radial-gradient(ellipse at 50% 15%, #FFFFFF 0%, #F0F6FC 50%, #E3EEF8 100%);
+  border: 1.5px solid rgba(169, 201, 229, 0.65);
+  box-shadow:
+    0 20px 50px -10px rgba(25, 59, 85, 0.12),
+    0 4px 15px rgba(25, 59, 85, 0.04),
+    inset 0 0 60px rgba(255, 255, 255, 0.7);
 }
 
 .driveway-backdrop {
   position: absolute;
   inset: 0;
-  background: url('../assets/images/palace_ballroom.jpg') no-repeat center 35% / cover;
-  opacity: 0.12;
-  filter: saturate(0.6) brightness(1.2);
+  background: url('../assets/images/palace_garden_evening.png') no-repeat center 30% / cover;
+  opacity: 0.22;
+  filter: saturate(0.7) brightness(1.15);
   pointer-events: none;
 }
 
@@ -1335,14 +1397,37 @@ button {
 
 .driveway-foreground-flowers {
   position: absolute;
-  bottom: -4px;
+  bottom: 0;
   left: 0;
   right: 0;
-  height: 50px;
-  background: radial-gradient(ellipse at 15% 100%, rgba(169, 201, 229, 0.35) 0%, transparent 60%),
-              radial-gradient(ellipse at 85% 100%, rgba(169, 201, 229, 0.35) 0%, transparent 60%);
+  height: 65px;
+  background: radial-gradient(ellipse at 12% 100%, rgba(169, 201, 229, 0.45) 0%, transparent 60%),
+              radial-gradient(ellipse at 88% 100%, rgba(169, 201, 229, 0.45) 0%, transparent 60%),
+              linear-gradient(to top, rgba(229, 240, 250, 0.5) 0%, transparent 100%);
   pointer-events: none;
   z-index: 6;
+}
+
+/* Fairy Lights & Stardust Motive Keyframes */
+.fairy-light {
+  transition: opacity 0.3s;
+}
+.fairy-phase-1 { animation: fairyPulse 1.8s ease-in-out infinite; }
+.fairy-phase-2 { animation: fairyPulse 1.8s ease-in-out infinite 0.45s; }
+.fairy-phase-3 { animation: fairyPulse 1.8s ease-in-out infinite 0.9s; }
+.fairy-phase-4 { animation: fairyPulse 1.8s ease-in-out infinite 1.35s; }
+@keyframes fairyPulse {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 1; }
+}
+
+@keyframes moteFloat {
+  0% { transform: translateY(0) translateX(0); opacity: 0.3; }
+  50% { opacity: 0.75; }
+  100% { transform: translateY(-16px) translateX(8px); opacity: 0.3; }
+}
+.garden-ambient-mote {
+  animation: moteFloat 5s ease-in-out infinite alternate;
 }
 
 /* 3 Sequential Revealing Cards */
@@ -1434,19 +1519,21 @@ button {
   background: #FFFFFF;
   border-radius: 12px;
   padding: clamp(1.8rem, 4vw, 2.5rem) clamp(1.2rem, 3vw, 2rem);
-  border: 1px solid rgba(169, 201, 229, 0.5);
+  border: 1px solid rgba(169, 201, 229, 0.55);
   box-shadow:
-    0 18px 45px -8px rgba(25, 59, 85, 0.1),
-    0 4px 12px rgba(25, 59, 85, 0.04);
+    0 1px 3px rgba(25, 59, 85, 0.05),
+    0 20px 48px -8px rgba(25, 59, 85, 0.1),
+    0 4px 14px rgba(25, 59, 85, 0.04),
+    inset 0 0 0 1px rgba(197, 173, 121, 0.3);
 }
 
 .cal-card-corner {
   position: absolute;
-  width: 36px;
-  height: 36px;
+  width: 42px;
+  height: 42px;
   background: url('../assets/images/hydrangea_corner.svg') no-repeat center / contain;
   pointer-events: none;
-  opacity: 0.5;
+  opacity: 0.85;
 }
 .cal-card-corner-tl { top: 8px; left: 8px; }
 .cal-card-corner-tr { top: 8px; right: 8px; transform: scaleX(-1); }
@@ -1504,7 +1591,7 @@ button {
   justify-content: center;
   font-family: var(--ff-serif);
   font-size: clamp(0.95rem, 1.8vw, 1.15rem);
-  color: #244866;
+  color: #193B55;
   border-radius: 50%;
   transition: background 0.25s, color 0.25s;
 }
@@ -1515,18 +1602,22 @@ button {
 
 .cal-cell.target-day {
   font-weight: 700;
-  color: #FFFFFF;
+  color: #193B55; /* Always visible deep navy text */
   z-index: 4;
+}
+
+.cal-cell.target-day.settled {
+  color: #FFFFFF; /* Crisp white when settled over heart */
 }
 
 .cal-heart-marker {
   position: absolute;
-  width: 34px;
-  height: 32px;
+  width: 36px;
+  height: 34px;
   pointer-events: none;
   z-index: 3;
   opacity: 0;
-  transform: scale(0.85);
+  transform: scale(0.9);
   transition: left 0.35s cubic-bezier(0.25, 1, 0.5, 1),
               top 0.35s cubic-bezier(0.25, 1, 0.5, 1),
               opacity 0.3s ease, transform 0.3s ease;
@@ -1591,11 +1682,15 @@ button {
 .countdown-alcove {
   max-width: 680px;
   margin: 0 auto;
-  background: linear-gradient(180deg, #F0F6FC 0%, #FFFFFF 100%);
-  border-radius: 40px 40px 16px 16px;
-  padding: clamp(2rem, 5vw, 3.5rem) clamp(1.2rem, 4vw, 2.5rem);
-  border: 1px solid rgba(169, 201, 229, 0.5);
-  box-shadow: 0 16px 45px -8px rgba(25, 59, 85, 0.08);
+  background: linear-gradient(180deg, #F2F7FC 0%, #FFFFFF 100%);
+  border-radius: clamp(120px, 16vw, 180px) clamp(120px, 16vw, 180px) 18px 18px;
+  padding: clamp(2.4rem, 5vw, 3.8rem) clamp(1.2rem, 4vw, 2.5rem);
+  border: 1.5px solid rgba(169, 201, 229, 0.55);
+  box-shadow:
+    0 1px 3px rgba(25, 59, 85, 0.05),
+    0 20px 50px -10px rgba(25, 59, 85, 0.09),
+    inset 0 0 0 1px rgba(197, 173, 121, 0.3);
+  position: relative;
 }
 
 .countdown-dials {
@@ -1612,18 +1707,18 @@ button {
   align-items: center;
   justify-content: center;
   background: #FFFFFF;
-  border: 1px solid rgba(169, 201, 229, 0.4);
-  border-radius: 12px;
+  border: 1px solid rgba(169, 201, 229, 0.45);
+  border-radius: 14px;
   padding: clamp(0.9rem, 2vw, 1.4rem) clamp(0.75rem, 2.2vw, 1.5rem);
   min-width: clamp(65px, 16vw, 95px);
-  box-shadow: 0 4px 15px rgba(25, 59, 85, 0.04);
+  box-shadow: 0 4px 15px rgba(25, 59, 85, 0.05);
 }
 
 .dial-number {
   font-family: var(--ff-display);
-  font-size: clamp(1.8rem, 4vw, 2.7rem);
+  font-size: clamp(1.85rem, 4.2vw, 2.8rem);
   font-weight: 500;
-  color: var(--clr-navy-deep);
+  color: #193B55;
   line-height: 1;
 }
 
@@ -1760,9 +1855,8 @@ button {
     0 4px 10px rgba(25, 59, 85, 0.06);
   border: 1px solid rgba(197, 173, 121, 0.45);
   background: #F0F6FC;
-  opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 0.75s ease-out 0.35s, transform 0.75s cubic-bezier(0.2, 0.8, 0.25, 1) 0.35s;
+  opacity: 1; /* ALWAYS visible by default */
+  transform: none;
 }
 
 .venue-entrance-photo {
@@ -1802,16 +1896,15 @@ button {
   letter-spacing: 0.02em;
 }
 
-/* Right Column: Confirmed Venue Details & Map Actions */
+/* Right Column: Confirmed Venue Details & Map Actions - ALWAYS FULLY VISIBLE! */
 .venue-info-column {
   display: flex;
   flex-direction: column;
 }
 
 .venue-header-group {
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 0.65s ease-out 0.45s, transform 0.65s ease-out 0.45s;
+  opacity: 1; /* Always visible */
+  transform: none;
 }
 
 .venue-badge {
@@ -1870,9 +1963,8 @@ button {
   margin-bottom: 1.6rem;
   padding-top: 0.75rem;
   border-top: 1px solid rgba(169, 201, 229, 0.4);
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 0.65s ease-out 0.65s, transform 0.65s ease-out 0.65s;
+  opacity: 1; /* Always visible */
+  transform: none;
 }
 
 .venue-detail-item {
@@ -1895,9 +1987,8 @@ button {
   flex-wrap: wrap;
   gap: 0.75rem;
   align-items: center;
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 0.65s ease-out 0.85s, transform 0.65s ease-out 0.85s;
+  opacity: 1; /* Always visible */
+  transform: none;
 }
 
 .venue-action-btn {
@@ -1991,16 +2082,8 @@ button {
   stroke-dashoffset: 0;
 }
 
-.venue-travel-card.is-revealed .venue-photo-card,
-.venue-travel-card.is-revealed .venue-header-group,
-.venue-travel-card.is-revealed .venue-details-list,
-.venue-travel-card.is-revealed .venue-button-row {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 .venue-travel-card.is-revealed .venue-light-sweep {
-  animation: venueSweep 0.9s cubic-bezier(0.2, 0.8, 0.3, 1) 1.25s forwards;
+  animation: venueSweep 0.9s cubic-bezier(0.2, 0.8, 0.3, 1) 0.6s forwards;
 }
 
 @keyframes venueSweep {
@@ -2073,14 +2156,6 @@ button {
     stroke-dashoffset: 0 !important;
     transition: none !important;
   }
-  .venue-photo-card,
-  .venue-header-group,
-  .venue-details-list,
-  .venue-button-row {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-  }
   .venue-light-sweep {
     display: none !important;
   }
@@ -2099,6 +2174,7 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 
 .card-display-envelope {
@@ -2112,9 +2188,10 @@ button {
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  border: 1px solid rgba(197, 173, 121, 0.5);
+  border: 1px solid rgba(197, 173, 121, 0.55);
   box-shadow:
-    0 20px 50px -10px rgba(25, 59, 85, 0.18),
+    0 1px 3px rgba(25, 59, 85, 0.06),
+    0 22px 55px -10px rgba(25, 59, 85, 0.2),
     0 6px 18px rgba(25, 59, 85, 0.08);
   cursor: zoom-in;
   background: #FFFFFF;
@@ -2123,8 +2200,8 @@ button {
 .card-art-frame:hover {
   transform: translateY(-4px) scale(1.01);
   box-shadow:
-    0 26px 60px -10px rgba(25, 59, 85, 0.22),
-    0 8px 22px rgba(25, 59, 85, 0.1);
+    0 28px 65px -10px rgba(25, 59, 85, 0.24),
+    0 8px 24px rgba(25, 59, 85, 0.1);
 }
 
 .keepsake-card-image {
@@ -2139,7 +2216,7 @@ button {
   position: absolute;
   bottom: 12px;
   right: 12px;
-  background: rgba(25, 59, 85, 0.8);
+  background: rgba(25, 59, 85, 0.85);
   color: #FFFFFF;
   font-family: var(--ff-display);
   font-size: 0.72rem;
@@ -2148,7 +2225,7 @@ button {
   border-radius: 999px;
   backdrop-filter: blur(4px);
   pointer-events: none;
-  opacity: 0.9;
+  opacity: 0.95;
 }
 
 .keepsake-actions {
@@ -2158,7 +2235,6 @@ button {
   justify-content: center;
   gap: 1rem;
 }
-
 /* Fullscreen Lightbox Modal */
 .card-lightbox {
   position: fixed;

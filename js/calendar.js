@@ -74,7 +74,6 @@
           </defs>
           <path d="M 18 31 C 18 31 2 20 2 10.5 C 2 4.8 6.5 1 12 1 C 15.2 1 17 2.6 18 3.8 C 19 2.6 20.8 1 24 1 C 29.5 1 34 4.8 34 10.5 C 34 20 18 31 18 31 Z"
                 fill="url(#calHeartGrad)" stroke="#C5AD79" stroke-width="1.8" filter="url(#heartGlow)"/>
-          <text x="18" y="14.5" text-anchor="middle" dominant-baseline="central" fill="#FFFFFF" font-family="'Cinzel', Georgia, serif" font-weight="700" font-size="14.5">5</text>
         </svg>
       `;
       heartEl.setAttribute('aria-hidden', 'true');
@@ -109,6 +108,7 @@
   let hasFinished            = false;
   let stepIndex              = 0;
   let activeTimeout          = null;
+  let activeHoverCell        = null;
 
   // Jumping dates ending on Saturday, 5 December
   const SEARCH_DATES = [3, 12, 7, 19, 2, 24, 8, 14, 5];
@@ -147,13 +147,17 @@
     isRunning   = false;
     isPaused    = false;
     hasFinished = true;
+    if (activeHoverCell) {
+      activeHoverCell.style.color = '';
+      activeHoverCell = null;
+    }
     const dayCells = getDayCells();
     const targetCell = dayCells.find(c => c.day === TARGET_DAY);
     if (targetCell) {
       targetCell.el.classList.add('settled');
       moveHeartToCell(targetCell.el);
       heartEl.style.opacity = '1';
-      heartEl.style.transform = 'scale(1.4)';
+      heartEl.style.transform = 'scale(1.35)';
       triggerCalendarCelebration(targetCell.el);
       setTimeout(() => {
         if (heartEl) heartEl.style.transform = 'scale(1.05)';
@@ -169,11 +173,18 @@
       return;
     }
 
+    if (activeHoverCell) {
+      activeHoverCell.style.color = '';
+      activeHoverCell = null;
+    }
+
     const dayNumber = SEARCH_DATES[stepIndex];
     const dayCells = getDayCells();
     const cellObj = dayCells.find(c => c.day === dayNumber);
 
     if (cellObj) {
+      activeHoverCell = cellObj.el;
+      activeHoverCell.style.color = '#FFFFFF';
       moveHeartToCell(cellObj.el);
       heartEl.style.opacity = '1';
     }

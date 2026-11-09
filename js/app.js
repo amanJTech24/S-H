@@ -134,20 +134,68 @@
   // ── Restrained "Welcome to the celebration" Venue Entrance Animation ──
   const venueTravelCard = document.querySelector('.venue-travel-card');
   if (venueTravelCard) {
+    const revealVenue = () => venueTravelCard.classList.add('is-revealed');
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      venueTravelCard.classList.add('is-revealed');
+      revealVenue();
     } else if ('IntersectionObserver' in window) {
       const vObs = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            venueTravelCard.classList.add('is-revealed');
+            revealVenue();
             vObs.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.25 });
+      }, { threshold: 0.1 });
       vObs.observe(venueTravelCard);
+      // Safety guarantee: reveal automatically after 1.5s so buttons are never delayed
+      setTimeout(revealVenue, 1500);
     } else {
-      venueTravelCard.classList.add('is-revealed');
+      revealVenue();
+    }
+  }
+
+  // ── React Bits: Glare Hover on Keepsake Card & Venue Photo Frame ─────
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    const glareTargets = document.querySelectorAll('#card-preview-wrap, .venue-photo-card');
+    glareTargets.forEach(card => {
+      let glareLayer = card.querySelector('.glare-hover-layer');
+      if (!glareLayer) {
+        glareLayer = document.createElement('div');
+        glareLayer.className = 'glare-hover-layer';
+        card.appendChild(glareLayer);
+      }
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        glareLayer.style.setProperty('--glare-x', `${x.toFixed(1)}%`);
+        glareLayer.style.setProperty('--glare-y', `${y.toFixed(1)}%`);
+        glareLayer.style.opacity = '1';
+      });
+      card.addEventListener('mouseleave', () => {
+        glareLayer.style.opacity = '0';
+      });
+    });
+  }
+
+  // ── React Bits: Animated Content Reveal Observer ────────────────────
+  const animatedContents = document.querySelectorAll('.reveal-animated-content');
+  if (animatedContents.length > 0) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      animatedContents.forEach(el => el.classList.add('is-in-view'));
+    } else if ('IntersectionObserver' in window) {
+      const animObs = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in-view');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+      animatedContents.forEach(el => animObs.observe(el));
+      setTimeout(() => animatedContents.forEach(el => el.classList.add('is-in-view')), 2500);
+    } else {
+      animatedContents.forEach(el => el.classList.add('is-in-view'));
     }
   }
 

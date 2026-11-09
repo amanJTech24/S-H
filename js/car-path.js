@@ -32,11 +32,11 @@
   const VBHEIGHT = 280;
   svgEl.setAttribute('viewBox', `0 0 ${VBWIDTH} ${VBHEIGHT}`);
 
-  // Elegant S-curve road
-  const ROAD_D = `M -80 ${VBHEIGHT * 0.65}
+  // Elegant S-curve road ending gracefully at palace arrival
+  const ROAD_D = `M -60 ${VBHEIGHT * 0.65}
     C 120 ${VBHEIGHT * 0.65}, 220 ${VBHEIGHT * 0.26}, 400 ${VBHEIGHT * 0.32}
-    S 640 ${VBHEIGHT * 0.62}, 780 ${VBHEIGHT * 0.42}
-    S 920 ${VBHEIGHT * 0.32}, ${VBWIDTH + 80} ${VBHEIGHT * 0.35}`;
+    S 640 ${VBHEIGHT * 0.62}, 750 ${VBHEIGHT * 0.42}
+    S 820 ${VBHEIGHT * 0.34}, 860 ${VBHEIGHT * 0.38}`;
 
   // Invisible travel path for getPointAtLength
   const travelPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
@@ -45,36 +45,18 @@
   travelPath.setAttribute('stroke', 'none');
   svgEl.appendChild(travelPath);
 
-  // Background road line (soft sand dashed)
-  const roadBg = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-  roadBg.setAttribute('d', ROAD_D);
-  roadBg.setAttribute('fill', 'none');
-  roadBg.setAttribute('stroke', 'rgba(199, 170, 114, 0.25)');
-  roadBg.setAttribute('stroke-width', '3');
-  roadBg.setAttribute('stroke-dasharray', '8 6');
-  svgEl.insertBefore(roadBg, svgEl.firstChild);
-
-  // Active glowing trail drawn behind the car (champagne gold & ocean blue)
-  const drawnTrail = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-  drawnTrail.setAttribute('d', ROAD_D);
-  drawnTrail.setAttribute('fill', 'none');
-  drawnTrail.setAttribute('stroke', 'url(#carTrailGrad)');
-  drawnTrail.setAttribute('stroke-width', '3.5');
-  drawnTrail.setAttribute('stroke-linecap', 'round');
-  drawnTrail.setAttribute('opacity', '0.95');
-  svgEl.insertBefore(drawnTrail, svgEl.firstChild);
-
-  // Stardust sparkle particle container
-  const stardustGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-  stardustGroup.id = 'car-stardust-group';
-  svgEl.appendChild(stardustGroup);
-
   // Gradient defs
   const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
   defs.innerHTML = `
+    <linearGradient id="drivewayPaveGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="${VBWIDTH}" y2="0">
+      <stop offset="0%" stop-color="#F8F6F0"/>
+      <stop offset="35%" stop-color="#EDE7DB"/>
+      <stop offset="70%" stop-color="#F3ECE0"/>
+      <stop offset="100%" stop-color="#E8E0D2"/>
+    </linearGradient>
     <linearGradient id="carTrailGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="${VBWIDTH}" y2="0">
       <stop offset="0%" stop-color="#3D87AE" stop-opacity="0.2"/>
-      <stop offset="50%" stop-color="#C7AA72" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#C7AA72" stop-opacity="0.85"/>
       <stop offset="100%" stop-color="#3D87AE" stop-opacity="1"/>
     </linearGradient>
     <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
@@ -83,6 +65,90 @@
     </filter>
   `;
   svgEl.insertBefore(defs, svgEl.firstChild);
+
+  // Paved Garden Roadbed Ribbon (Dimensional Paved Driveway)
+  const roadGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+  roadGroup.id = 'journey-paved-road';
+  roadGroup.innerHTML = `
+    <!-- Outer ground shadow of the garden driveway -->
+    <path d="${ROAD_D}" fill="none" stroke="rgba(25, 59, 85, 0.08)" stroke-width="70" stroke-linecap="round"/>
+    <!-- Outer Champagne Curbstone Border -->
+    <path d="${ROAD_D}" fill="none" stroke="rgba(197, 173, 121, 0.5)" stroke-width="64" stroke-linecap="round"/>
+    <!-- Paved Stone Roadbed Surface -->
+    <path d="${ROAD_D}" fill="none" stroke="url(#drivewayPaveGrad)" stroke-width="56" stroke-linecap="round"/>
+    <!-- Decorative Curbs Paver Lines -->
+    <path d="${ROAD_D}" fill="none" stroke="rgba(197, 173, 121, 0.65)" stroke-width="58" stroke-dasharray="2 12" stroke-linecap="butt"/>
+    <!-- Centerline Garden Track Guide -->
+    <path d="${ROAD_D}" fill="none" stroke="rgba(197, 173, 121, 0.4)" stroke-width="2" stroke-dasharray="6 6"/>
+  `;
+  svgEl.appendChild(roadGroup);
+
+  // Active glowing trail drawn behind the car (champagne gold & ocean blue)
+  const drawnTrail = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  drawnTrail.setAttribute('d', ROAD_D);
+  drawnTrail.setAttribute('fill', 'none');
+  drawnTrail.setAttribute('stroke', 'url(#carTrailGrad)');
+  drawnTrail.setAttribute('stroke-width', '4');
+  drawnTrail.setAttribute('stroke-linecap', 'round');
+  drawnTrail.setAttribute('opacity', '0.95');
+  svgEl.appendChild(drawnTrail);
+
+  // Roadside garden landscaping group: Hydrangeas, White Roses, and Garden Lanterns
+  const gardenLandscaping = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+  gardenLandscaping.id = 'journey-landscaping';
+  gardenLandscaping.innerHTML = `
+    <!-- Entrance Garden Shrub (Hydrangea & White Roses) -->
+    <g transform="translate(100, 205)">
+      <circle cx="-8" cy="0" r="14" fill="#A9C9E5" opacity="0.65"/>
+      <circle cx="6" cy="-4" r="12" fill="#D5E4F2" opacity="0.7"/>
+      <circle cx="0" cy="4" r="10" fill="#FFFFFF" opacity="0.85"/>
+      <circle cx="-2" cy="-2" r="6" fill="#C5AD79" opacity="0.4"/>
+    </g>
+    <!-- Hillcrest Garden Shrub & Lantern -->
+    <g transform="translate(410, 48)">
+      <circle cx="-10" cy="2" r="11" fill="#A9C9E5" opacity="0.6"/>
+      <circle cx="4" cy="-2" r="13" fill="#D5E4F2" opacity="0.75"/>
+      <circle cx="0" cy="4" r="8" fill="#FFFFFF" opacity="0.9"/>
+      <!-- Soft Amber Garden Lantern Glow -->
+      <circle cx="18" cy="-6" r="6" fill="#FFE066" opacity="0.4" filter="url(#softGlow)"/>
+      <circle cx="18" cy="-6" r="2.5" fill="#FFFFFF"/>
+    </g>
+    <!-- Lower Curve Garden Shrub -->
+    <g transform="translate(630, 200)">
+      <circle cx="-6" cy="2" r="13" fill="#A9C9E5" opacity="0.65"/>
+      <circle cx="8" cy="-3" r="11" fill="#FFFFFF" opacity="0.85"/>
+      <circle cx="0" cy="4" r="10" fill="#D5E4F2" opacity="0.7"/>
+    </g>
+    <!-- Destination Arrival Shrub & Lantern -->
+    <g transform="translate(860, 75)">
+      <circle cx="-6" cy="4" r="14" fill="#A9C9E5" opacity="0.65"/>
+      <circle cx="8" cy="-2" r="13" fill="#FFFFFF" opacity="0.9"/>
+      <circle cx="0" cy="6" r="11" fill="#D5E4F2" opacity="0.75"/>
+      <circle cx="-18" cy="-6" r="6" fill="#FFE066" opacity="0.4" filter="url(#softGlow)"/>
+      <circle cx="-18" cy="-6" r="2.5" fill="#FFFFFF"/>
+    </g>
+  `;
+  svgEl.appendChild(gardenLandscaping);
+
+  // Stardust sparkle particle container
+  const stardustGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+  stardustGroup.id = 'car-stardust-group';
+  svgEl.appendChild(stardustGroup);
+
+  // Initialize ambient garden light motes (React Bits Particles)
+  for (let i = 0; i < 14; i++) {
+    const mote = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    const mx = 60 + (i * 64) + (Math.random() * 30 - 15);
+    const my = 35 + Math.random() * 210;
+    const mr = 1.0 + Math.random() * 1.8;
+    mote.setAttribute('cx', mx.toFixed(1));
+    mote.setAttribute('cy', my.toFixed(1));
+    mote.setAttribute('r', mr.toFixed(1));
+    mote.setAttribute('fill', i % 2 === 0 ? '#FFE066' : '#FFFFFF');
+    mote.setAttribute('opacity', (0.25 + Math.random() * 0.35).toFixed(2));
+    mote.setAttribute('class', 'garden-ambient-mote');
+    stardustGroup.appendChild(mote);
+  }
 
   // Destination Heart Marker
   const heartGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
@@ -145,7 +211,7 @@
   // - Royal couple silhouette with golden safa (turban) and crimson bridal dupatta
   // - Trailing satin ribbons with golden hearts and bells
   carWrapper.innerHTML = `
-    <svg viewBox="0 0 190 100" width="190" height="100" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 190 100" width="164" height="94" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <!-- Dimensional Body Gradients -->
         <linearGradient id="carBodyGrad" x1="0" y1="0" x2="0" y2="1">
@@ -475,8 +541,8 @@
   let stardustCounter  = 0;
 
   const DURATION_MS    = prefersReducedMotion ? 50 : 5600;
-  const CAR_WIDTH      = 135;
-  const CAR_HEIGHT     = 78;
+  const CAR_WIDTH      = 164;
+  const CAR_HEIGHT     = 94;
 
   // Ultra-Smooth Cosine Easing (No jerky acceleration or stopping)
   function smoothCosine(t) {
@@ -516,7 +582,7 @@
 
     // High-precision GPU translation (no offsetWidth calls!)
     const px = pt.x * scaleX - CAR_WIDTH / 2;
-    const py = pt.y * scaleY - CAR_HEIGHT * 0.72;
+    const py = pt.y * scaleY - CAR_HEIGHT * 0.74;
 
     // Subtle natural suspension bounce
     bouncePhase += 0.14;
@@ -558,8 +624,8 @@
 
   function placeDestinationHeart() {
     const endPt = pathLUT[LUT_SAMPLES] || travelPath.getPointAtLength(totalLength);
-    heartGroup.setAttribute('transform', `translate(${endPt.x}, ${endPt.y})`);
-    heartGroup.style.transition = 'opacity 0.8s ease';
+    heartGroup.setAttribute('transform', `translate(${endPt.x + 36}, ${endPt.y - 14})`);
+    heartGroup.style.transition = 'opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.3, 1)';
     heartGroup.setAttribute('opacity', '1');
   }
 
