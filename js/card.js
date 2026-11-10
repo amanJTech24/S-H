@@ -35,7 +35,7 @@
   // Background artwork — user uploaded master card with Shehanshah Palace & cursive calligraphy
   const bgImg  = new Image();
   bgImg.crossOrigin = 'anonymous';
-  bgImg.src    = 'assets/images/invitation_card.png?v=5.1';
+  bgImg.src    = 'assets/images/invitation_card.png?v=5.2';
   let bgLoaded = false;
 
   function renderCard() {
