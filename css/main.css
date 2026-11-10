@@ -1242,6 +1242,57 @@ button {
   margin-bottom: 1.5rem;
 }
 
+.letter-grandparents-blessing {
+  font-family: var(--ff-serif);
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  line-height: 1.6;
+  color: #193B55;
+  max-width: 620px;
+  margin: 0 auto 1.85rem;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.letter-grandparents-blessing .blessing-salutation {
+  display: block;
+  font-size: clamp(0.96rem, 1.8vw, 1.1rem);
+  font-style: italic;
+  color: #55799C;
+  margin-bottom: 0.35rem;
+}
+
+.letter-grandparents-blessing .grandparents-names {
+  display: block;
+  font-family: var(--ff-serif);
+  font-weight: 600;
+  font-size: clamp(1.12rem, 2.3vw, 1.32rem);
+  color: #193B55;
+  letter-spacing: 0.015em;
+  margin: 0.35rem 0;
+  line-height: 1.45;
+}
+
+.letter-grandparents-blessing .gp-partner {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.letter-grandparents-blessing .gp-amp {
+  display: inline-block;
+  color: #C5AD79;
+  font-style: italic;
+  font-weight: 400;
+  margin: 0 0.25rem;
+}
+
+.letter-grandparents-blessing .blessing-invitation {
+  display: block;
+  font-size: clamp(0.96rem, 1.8vw, 1.1rem);
+  font-style: italic;
+  color: #55799C;
+  margin-top: 0.35rem;
+}
+
 .letter-message {
   font-family: var(--ff-body);
   font-size: clamp(1.1rem, 2vw, 1.25rem);

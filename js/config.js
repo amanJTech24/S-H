@@ -41,6 +41,9 @@ const WEDDING = Object.freeze({
   },
 
   // ── Parents & Family details ───────────────────────────────────────────
+  grandparents: {
+    bride: 'Late Smt. Asha Rani and Late Sh. Jayanti Parsad Jain',
+  },
   parents: {
     bride: 'D/O Manisha and Ajay Jain',
     groom: 'S/O Pooja and Parmod Kumar Jain',
@@ -51,6 +54,7 @@ const WEDDING = Object.freeze({
     heroEyebrow:     'A Wedding Celebration',
     heroTagline:     'Saturday · 5 December 2026',
     familyHeading:   'Our happiest day, made complete by you.',
+    grandparentsBlessing: 'With the heavenly blessings of grandparents Late Smt. Asha Rani and Late Sh. Jayanti Parsad Jain, We cordially invite you to celebrate the marriage of granddaughter',
     familyMessage:   'To the family who raised us, the relatives who have cheered us on, and the friends who became family—this celebration belongs to you too. As we begin our forever, we would love to have you beside us, filling the day with laughter, warm hugs, and your blessings.',
     familyClosing:   'With love, Srishti Jain & Himanshu Jain',
     journeyReveals: [
