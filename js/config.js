@@ -48,6 +48,15 @@ const WEDDING = Object.freeze({
     bride: 'D/O Manisha and Ajay Jain',
     groom: 'S/O Pooja and Parmod Kumar Jain',
   },
+  rsvp: {
+    heading: 'R.S.V.P',
+    members: [
+      { name: 'Rishab Jain', relation: '' },
+      { name: 'Sukrit Jain', relation: '(Brother)' },
+      { name: 'Shubhi Jain', relation: '(Sister)' },
+      { name: 'Aman Jain', relation: '(Brother)' },
+    ],
+  },
 
   // ── Site copy ──────────────────────────────────────────────────────────
   wording: {
